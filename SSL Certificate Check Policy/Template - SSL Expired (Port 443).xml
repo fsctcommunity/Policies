@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7970188794902783391" NAME="Template - SSL Expired (Port 443)" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Template - SSL Expired (Port 443)-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1.2023" PLUGIN_VESRION_NUMBER="108012023" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="7804584793745290140">
+                    <VALUE FROM="443/TCP" TO="443/TCP"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <SUBNET address="::" prefix="0"/>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2598429096777592394" NAME="Expiring cert" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Expiring cert-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3829164723936096170" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Q*.DOMAIN.COM\E.*" VALUE2="*.DOMAIN.COM"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="5624707731367306498" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QnotAfter=Apr 15 12:00:00 2019 GMT\E.*" VALUE2="notAfter=Apr 15 12:00:00 2019 GMT"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2806057129343706804" NAME="Updated Cert Applied" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Updated Cert Applied-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1390350676942056633" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Q*.DOMAIN.COM\E.*" VALUE2="*.DOMAIN.COM"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1712749401587860614" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QnotAfter=May 19 12:00:00 2021 GMT\E.*" VALUE2="notAfter=May 19 12:00:00 2021 GMT"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3968388268189496365" NAME="Some Other Cert Applied" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Some Other Cert Applied-->
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" INNER_NOT="true" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                    <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                    <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="1390073020455668708" REGEXP="true" TYPE="contains">
+                                    <VALUE VALUE=".*\Q*.DOMAIN.COM\E.*" VALUE2="*.DOMAIN.COM"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343" LABEL="CounterACT Script Result Ignore failed script result:false, Command or Script:cat /tmp/sslcertexpire/{ip}" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="cact_script_result" NAME="cact_script_result.ae977a905094eb3a2676439bcd1ff343">
+                                <PARAM NAME="ignore_fail" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="cact_script_params_prop" TYPE="string" VALUE="cat /tmp/sslcertexpire/{ip}"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5545804454893796696" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QnotAfter=\E.*" VALUE2="notAfter="/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
