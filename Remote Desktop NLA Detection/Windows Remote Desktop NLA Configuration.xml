@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-7956153395897286944" NAME="Windows Remote Desktop NLA Configuration" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="AND">
+            <!--Rule expression. Rule name is: Windows Remote Desktop NLA Configuration-->
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="-2198715686661489165">
+                        <GROUP ID="5438293333402205374" NAME="Windows Managed Devices"/>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports" LABEL="Open Ports" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="-4736180946638975905">
+                        <VALUE FROM="3389/TCP" TO="3389/TCP"/>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <SUBNET address="::" prefix="0"/>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7619237968367567041" NAME="Offline" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="NOT">
+                    <!--Rule expression. Rule name is: Offline-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="online" INNER_NOT="true" LABEL="Host is online" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-1533443770097698326" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4725497905104780109" NAME="NLA Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: NLA Enabled-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.fac2bef66ee7750820fd2de220553484" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="registry_1" NAME="registry_1.fac2bef66ee7750820fd2de220553484">
+                                <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections"/>
+                                <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3056298354290777138" TYPE="equals">
+                                <VALUE VALUE2="0"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.d8c2fc27c477423bdecdba8b1e6e1789" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\UserAuthentication, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="registry_1" NAME="registry_1.d8c2fc27c477423bdecdba8b1e6e1789">
+                                <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\UserAuthentication"/>
+                                <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-4111640622707183085" TYPE="equals">
+                                <VALUE VALUE2="1"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.9c2d5a44c19d4c36a15d2e8fdbf3f596" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SecurityLayer, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="registry_1" NAME="registry_1.9c2d5a44c19d4c36a15d2e8fdbf3f596">
+                                <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SecurityLayer"/>
+                                <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="906560430956484935" TYPE="equals">
+                                <VALUE VALUE2="1"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2097375479000048173" NAME="NLA Not Configured" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: NLA Not Configured-->
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.fac2bef66ee7750820fd2de220553484" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="OR" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="registry_1" NAME="registry_1.fac2bef66ee7750820fd2de220553484">
+                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections"/>
+                                    <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-3056298354290777138" TYPE="equals">
+                                    <VALUE VALUE2="0"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.d8c2fc27c477423bdecdba8b1e6e1789" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\UserAuthentication, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="OR" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="registry_1" NAME="registry_1.d8c2fc27c477423bdecdba8b1e6e1789">
+                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\UserAuthentication"/>
+                                    <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-4111640622707183085" TYPE="equals">
+                                    <VALUE VALUE2="1"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="registry_1.9c2d5a44c19d4c36a15d2e8fdbf3f596" LABEL="Windows Registry Value Registry Value Path:HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SecurityLayer, When the specified registry value is no longer detected::no" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="registry_1" NAME="registry_1.9c2d5a44c19d4c36a15d2e8fdbf3f596">
+                                    <PARAM NAME="registry_key" TYPE="string" VALUE="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SecurityLayer"/>
+                                    <PARAM NAME="delete_irresolvable" TYPE="string" VALUE="no"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="906560430956484935" TYPE="equals">
+                                    <VALUE VALUE2="1"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3741387284090340844" NAME="Investigate" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
