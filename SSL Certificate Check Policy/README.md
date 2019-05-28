@@ -9,7 +9,7 @@ We searched for a specific *.acme.local certificate that had an expiration of MM
 DB and Google Spreadsheet with the devices that needed to be updated.
 
 The first gathers all systems with open ports 443/TCP (I replicated these for other ports like 8443 also). 
-On all the systems with 443/tcp open I'm executing a script on the counteract appliances to run an open_ssl 
+On all the systems with 443/tcp open I'm executing a script on the CounterACT appliances to run an open_ssl 
 command against the {ip}:443 hosts to pull back all the cert details (i.e name and expiration). 
 It writes these results to /tmp/sslexpire/{ip}:443 on the counteract appliances (i.e. /tmp/sslexpire/192.168.1.1:443)
 
