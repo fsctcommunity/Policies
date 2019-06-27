@@ -1,0 +1,2 @@
+# Policy Overview
+This policy focus on detecting the exact version of Windows 10 and marking whether a device is compliant based supported Windows versions. THis policy was published 1st on the Forescout Community Slack and then merged with a policy from Forescout as well.
