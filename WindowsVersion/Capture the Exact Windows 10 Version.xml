@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Policy to grab the exact Windows 10 Version" ENABLED="true" ID="-1827195380784119476" NAME="Capture the Exact Windows 10 Version" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Capture the Exact Windows 10 Version-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-7406230368058694128">
+                    <GROUP ID="8468889959077816271" NAME="All Managed Windows Devices"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-3109178619152565739" NAME="Nakatomi - In Scope">
+            <RANGE FROM="10.0.0.1" TO="10.1.2.255"/>
+            <RANGE FROM="10.2.0.0" TO="10.2.0.255"/>
+            <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+            <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+            <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+            <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+            <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+            <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10.0.18362.175 or 1903 " ID="-7513821419711389574" NAME="Windows 10 1903" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1903-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="2580125266764459739" TYPE="contains">
+                            <VALUE VALUE2="1903"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-8813269309701719105;name:Windows 10 1903"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Policy looking for a specific version of Windows 10&#10;" ID="6945333836535741198" NAME="Windows 10 1809" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1809-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-3303103586083011168" TYPE="contains">
+                            <VALUE VALUE2="10.0.17763"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-1629326089837918755;name:Windows 10 1809"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6204751973830217443" NAME="Windows 10 1803" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1803-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-7476073872684639983" TYPE="contains">
+                            <VALUE VALUE2="1803"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:4789120376405754974;name:Windows 10 1803"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-561350078681293418" NAME="Windows 10 1709" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1709-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="1458590450130586842" TYPE="contains">
+                            <VALUE VALUE2="10.0.17763"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:4919959305850552721;name:Windows 10 1709"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="842433422836389542" NAME="Windows 10 1703" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1703-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="2710996550417036266" TYPE="contains">
+                            <VALUE VALUE2="10.0.15063"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-9202336724334625258;name:Windows 10 1703"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7179595366735453896" NAME="Windows 10 1607" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows 10 1607-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.7f3586b452f3c316f91745ec6b665158" LABEL="Windows Expected Script Result Command or Script file:winver.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.7f3586b452f3c316f91745ec6b665158">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="winver.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-463809920126583491" TYPE="contains">
+                            <VALUE VALUE2="10.0.14393"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:5694776433296922846;name:Windows 10 1607"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5550509325775472577" NAME="Other versions of Windows 10" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
