@@ -11,3 +11,7 @@ Each policy folder will have a README.md file that will describe what the policy
     - Various text infromation and other values can be grabbed from the certificate to be leveraged in a policy
 - Remote Desktop NLA Detection Policy
     -Policy for detecting Managed Windows devices that that are listening on TCP/3389 (RDP) that have NLA enabled.
+- Altiris Agent Hygiene
+    - Policy to chcek status of the Altiris Services and whether or not they are working. Checks for the AEXNSAgent service running or not
+- Windows Version Policy
+    - Policy to grab the exact Windows 10 version by running a script to grab the full Windows version
