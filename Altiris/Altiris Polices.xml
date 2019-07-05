@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="5418569360635844777" NAME="Altiris Polices">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Policies to check compliance around Altiris (Symantec Mangemnt Platform)" ENABLED="true" ID="5848384688701082813" NAME="Symantec Mangement Platform" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Symantec Mangement Platform-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-750349496573378533">
+                            <GROUP ID="8468889959077816271" NAME="All Managed Windows Devices"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SEGMENT ID="-3109178619152565739" NAME="Nakatomi - In Scope">
+                    <RANGE FROM="10.0.0.1" TO="10.1.2.255"/>
+                    <RANGE FROM="10.2.0.0" TO="10.2.0.255"/>
+                    <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+                    <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+                    <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+                    <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+                    <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+                    <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+                </SEGMENT>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1676017166453107041" NAME="Altirs Agent Installed and Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Altirs Agent Installed and Running-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service_installed_change" LABEL="Windows Service Installed/Removed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="5817680031277976964" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1561657211"/>
+                                    <FILTER CHANGE_TYPE="ADD" FILED_NAME="service_installed" FILTER_ID="57236256498765479">
+                                        <VALUE_FILTER>
+                                            <FILTER ANY="false" FILTER_ID="-331559127518183315" IRRESOLVABLE="false" NOT="false">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8239498147870522227" TYPE="contains">
+                                                    <VALUE VALUE2="AexNSAgent"/>
+                                                </FILTER>
+                                            </FILTER>
+                                        </VALUE_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="7020936822760098285" TYPE="contains">
+                                        <VALUE VALUE2="AeXNSAgent"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6477679135980482125" NAME="Altirs Agent Installed and NOT Running" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="AND">
+                            <!--Rule expression. Rule name is: Altirs Agent Installed and NOT Running-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service_installed_change" LABEL="Windows Service Installed/Removed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-8846616533147047224" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1561731653"/>
+                                    <FILTER CHANGE_TYPE="ADD" FILED_NAME="service_installed" FILTER_ID="-6456161920996252723">
+                                        <VALUE_FILTER>
+                                            <FILTER ANY="false" FILTER_ID="4713445386901987528" IRRESOLVABLE="false" NOT="false">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-55661294688016965" TYPE="contains">
+                                                    <VALUE VALUE2="AeXNSAgent"/>
+                                                </FILTER>
+                                            </FILTER>
+                                        </VALUE_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="NOT">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service" LABEL="Windows Services Running" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3283401475912768666" TYPE="contains">
+                                            <VALUE VALUE2="AeXNSAgent"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="794427130320489235" NAME="Altirs Agent Not Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="NOT">
+                            <!--Rule expression. Rule name is: Altirs Agent Not Installed-->
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="service_installed_change" LABEL="Windows Service Installed/Removed" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                    <FILTER FILTER_ID="-6566492037386285200" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1561732383"/>
+                                    <FILTER CHANGE_TYPE="ADD" FILED_NAME="service_installed" FILTER_ID="2913070598877485754">
+                                        <VALUE_FILTER>
+                                            <FILTER ANY="false" FILTER_ID="-5826376851163849794" IRRESOLVABLE="false" NOT="false">
+                                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-867460243376612831" TYPE="contains">
+                                                    <VALUE VALUE2="AexNSAgent"/>
+                                                </FILTER>
+                                            </FILTER>
+                                        </VALUE_FILTER>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>
