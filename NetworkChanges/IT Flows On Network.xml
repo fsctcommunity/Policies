@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy checks for protocols commonly seen in IT environments and applies labels to any devices that speak them. Devices should end up in the No Traffic or Labeled sub-rules. Other sub-rules should always be empty." ENABLED="true" ID="6374483867172652173" NAME="IT Flows On Network" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3222430507503552913" NAME="SSH" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: SSH-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-4681757687596254537" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="-5419431430253956022">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="22/TCP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="5610540545526988255" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521743989"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8680291264311987429" TYPE="equals">
+                                    <VALUE VALUE2="SSH"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="SSH"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3498080412029138656" NAME="Telnet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Telnet-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="7762928028699232808" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="-1120242763940609595">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="23/TCP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="1705188247185237342" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="7758179008680177883" TYPE="equals">
+                                    <VALUE VALUE2="Telnet"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="Telnet"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1317728307310971273" NAME="HTTP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: HTTP-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-5355827123000666190" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="8297813482670091710">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="80/TCP,8080/TCP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-6823148491315838680" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-8003387955910348854" TYPE="equals">
+                                    <VALUE VALUE2="HTTP"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="HTTP"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3055090019219675860" NAME="HTTPS" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: HTTPS-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-7533503227407019123" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="-8659921776865895095">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="443/TCP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="8027431824847881552" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="392532215811937709" TYPE="equals">
+                                    <VALUE VALUE2="HTTPS"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="HTTPS"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7616934000440037924" NAME="Syslog" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Syslog-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-2339423899864539263" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="-1478479942204187083">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="514/TCP,514/UDP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="2826515108914333248" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3087941176178103471" TYPE="equals">
+                                    <VALUE VALUE2="Syslog"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="Syslog"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="693634570628021911" NAME="FTP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: FTP-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-1881531486079588690" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="-8499843281746259373">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="21/TCP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="3658774120629048721" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2770391449184642751" TYPE="equals">
+                                    <VALUE VALUE2="FTP"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="FTP"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5346025720692836855" NAME="TFTP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: TFTP-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-7886369609383469036" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="681236027501803152">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="false" PORTS_RANGE="69/UDP">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-9015917851833072683" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521741196"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-4728390215284993069" TYPE="equals">
+                                    <VALUE VALUE2="TFTP"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="TFTP"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6029911239529229012" NAME="Non IT Traffic" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Non IT Traffic-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-6358730798274805572" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="1464590889196409663">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="true" PORTS_RANGE="">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" INNER_NOT="true" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="4798387276285923922" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                                <FILTER FILTER_ID="3792851199682024606">
+                                    <SESSION FIELD_NAME="client_session" LINKED="true">
+                                        <LINK ID="-5414575965516754460"/>
+                                        <IP_RANGES>
+                                            <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                        </IP_RANGES>
+                                    </SESSION>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-3799035757172823578" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1521742764"/>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="7982508346972158564" TYPE="equals">
+                                    <VALUE VALUE2="Non IT Traffic"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="Non IT Traffic"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3719673145111085821" NAME="No Traffic" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="NOT">
+                    <!--Rule expression. Rule name is: No Traffic-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="client_session" INNER_NOT="true" LABEL="Sessions as Client" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="501374232808970404" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="604800"/>
+                            <FILTER FILTER_ID="7365917126751363636">
+                                <SESSION FIELD_NAME="client_session" PORTS_ALL="true" PORTS_RANGE="">
+                                    <IP_RANGES>
+                                        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                                    </IP_RANGES>
+                                </SESSION>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7575003320512144133" NAME="Labeled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <PROPERTY_LISTS>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="openports" ID="-5414575965516754460" NAME="SubRule Ports">
+                <FILTER>
+                    <VALUE FROM="161/UDP" TO="161/UDP"/>
+                    <VALUE FROM="443/TCP" TO="443/TCP"/>
+                    <VALUE FROM="8080/TCP" TO="8080/TCP"/>
+                    <VALUE FROM="514/TCP" TO="514/TCP"/>
+                    <VALUE FROM="80/TCP" TO="80/TCP"/>
+                    <VALUE FROM="514/UDP" TO="514/UDP"/>
+                    <VALUE FROM="21/TCP" TO="23/TCP"/>
+                </FILTER>
+            </HOST_PROPERTY_LIST>
+        </PROPERTY_LISTS>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
