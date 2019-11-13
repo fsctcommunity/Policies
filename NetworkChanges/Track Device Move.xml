@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="4995430157999116327" NAME="Track Device Move" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Track Device Move-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                <FILTER CASE_SENSITIVE="false" FILTER_ID="2814119426884949900" TYPE="any">
+                    <VALUE VALUE2="Any"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME=""/>
+        <UNMATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6150527110300646727" NAME="No change detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: No change detected-->
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="1924094911336465938" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_port_desc" FILTER_ID="-3026093214152009968" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="NOT">
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                <FILTER FILTER_ID="-680566182400883376" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                                <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="-7024857235818533646" POTENTIAL="false">
+                                    <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                    <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8120555540001793469" NAME="Host moved between switches" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Host moved between switches-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-1097342356604169273" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                        <FILTER FILED_NAME="sw_ip" FILTER_ID="-1613828358519668547" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7443799905987549483" NAME="Host port VLAN changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Host port VLAN changed-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_change" LABEL="Switch Port VLAN Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-8157940199943127575" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                        <FILTER FILED_NAME="sw_port_vlan" FILTER_ID="7542755132651895032" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3227054795066966370" NAME="Switch Port Changed (same switch)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="14400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Switch Port Changed (same switch)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="7154820778628039634" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                        <FILTER FILED_NAME="sw_port_desc" FILTER_ID="4875749823809082307" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                            <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>

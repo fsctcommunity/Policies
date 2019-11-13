@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="623115229740836875" NAME="Operating System Changes Network Function" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="120000" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME=""/>
+        <UNMATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="722614774218755805" NAME="No MAC Address Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="NOT">
+                    <!--Rule expression. Rule name is: No MAC Address Detected-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac" INNER_NOT="true" LABEL="MAC Address" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="2387431292324116437" TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8241257338249354398" NAME="Network Function Changed from Windows to non-Windows" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Network Function Changed from Windows to non-Windows-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-6813890681317248875" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                        <FILTER FILED_NAME="va_netfunc" FILTER_ID="-5909672259046613775" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-664812012141843029" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="windows"/>
+                                </FILTER>
+                            </OLD_VALUE_FILTER>
+                            <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="2687796174631807481" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="windows"/>
+                                </FILTER>
+                            </NEW_VALUE_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1445294283767102496" NAME="Network Function Changed from Printer to non-Printer" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Network Function Changed from Printer to non-Printer-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-1723529938613065206" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1367338238"/>
+                        <FILTER FILED_NAME="va_netfunc" FILTER_ID="5738693768658960406" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="838261114515937550" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="printer"/>
+                                </FILTER>
+                            </OLD_VALUE_FILTER>
+                            <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-7368519749364848197" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="printer"/>
+                                </FILTER>
+                            </NEW_VALUE_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7725162491747403506" NAME="Network Function Changed from Network to non-Network" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Network Function Changed from Network to non-Network-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_netfunc_change" LABEL="Network Function Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.0" PLUGIN_VESRION_NUMBER="110000154" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="8680469661278285267" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1367338294"/>
+                        <FILTER FILED_NAME="va_netfunc" FILTER_ID="3945985225442161523" POTENTIAL="false">
+                            <OLD_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="false">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="-3762901608286454803" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="netdevice"/>
+                                </FILTER>
+                            </OLD_VALUE_FILTER>
+                            <NEW_VALUE_FILTER ANY="false" IRRESOLVABLE="false" NOT="true">
+                                <FILTER AUTO_UPDATE="false" FILTER_ID="6585728202230899334" OPTIONS_DIGEST="055aec0516fd83d418f20ff3d291c4cf">
+                                    <OPT VALUE="netdevice"/>
+                                </FILTER>
+                            </NEW_VALUE_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5463230075814899538" NAME="Windows Version Changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="86400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Windows Version Changed-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_change" LABEL="Windows Version Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Windows Applications" PLUGIN_UNIQUE_NAME="meta" PLUGIN_VESRION="19.0.5" PLUGIN_VESRION_NUMBER="190050014" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="2631927577398830615" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="259200"/>
+                            <FILTER FILED_NAME="va_os" FILTER_ID="-3393737694934397963" POTENTIAL="false">
+                                <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                                <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-6400362071269438286">
+                                <GROUP ID="6240847594443685321" NAME="Domain Managed Windows Devices"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4178418548877026787" NAME="No Changes Detected" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>

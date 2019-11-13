@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-4984448562746173878" NAME="Track Switch Change-state" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="OR">
+            <!--Rule expression. Rule name is: Track Switch Change-state-->
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_ip_change" LABEL="Switch IP/FQDN Change" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="-6641788238257727434" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1534266196"/>
+                    <FILTER FILED_NAME="sw_ip" FILTER_ID="-2134222303799769365" POTENTIAL="false">
+                        <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc_change" LABEL="Switch Port Name Change" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="-6641788238257727434" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1534266196"/>
+                    <FILTER FILED_NAME="sw_port_desc" FILTER_ID="4633941806220823937" POTENTIAL="false">
+                        <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_connected_change" LABEL="Switch Port Connectivity Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.0" PLUGIN_VESRION_NUMBER="81300262" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="-3481723008770753770" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1269520029"/>
+                    <FILTER FILED_NAME="sw_port_connected" FILTER_ID="-3440878161632939601" POTENTIAL="false">
+                        <OLD_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                        <NEW_VALUE_FILTER ANY="true" IRRESOLVABLE="false" NOT="false"/>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME=""/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN/>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>

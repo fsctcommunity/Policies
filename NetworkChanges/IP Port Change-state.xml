@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-3907735758672184063" NAME="TCP/IP Port Change-state" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7338418889511253698" NAME="Critical System Port Change" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Critical System Port Change-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="access_ip" LABEL="Access IP" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2436132328955465105" LINKED="true">
+                                <LINK ID="-6430619085963719273"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports_change" LABEL="TCP/IP Port Opened/Closed" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="6186780535738295966" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1534775169"/>
+                            <FILTER CHANGE_TYPE="ANY" FILED_NAME="openports" FILTER_ID="-8327440468144884243">
+                                <VALUE_FILTER>
+                                    <FILTER ANY="true" FILTER_ID="4228181092050936446" IRRESOLVABLE="false" NOT="false"/>
+                                </VALUE_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7700827822456305656" NAME="General System Port Changed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: General System Port Changed-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports_change" LABEL="TCP/IP Port Opened/Closed" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-3813078123043509963" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1534775215"/>
+                        <FILTER CHANGE_TYPE="ANY" FILED_NAME="openports" FILTER_ID="-2645613778285367022">
+                            <VALUE_FILTER>
+                                <FILTER ANY="true" FILTER_ID="-4733476166507140854" IRRESOLVABLE="false" NOT="false"/>
+                            </VALUE_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8467491838305166351" NAME="No Port Change" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="NOT">
+                    <!--Rule expression. Rule name is: No Port Change-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="openports_change" INNER_NOT="true" LABEL="TCP/IP Port Opened/Closed" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-899118200635001971" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1534775237"/>
+                            <FILTER CHANGE_TYPE="ANY" FILED_NAME="openports" FILTER_ID="-4483457668393239071">
+                                <VALUE_FILTER>
+                                    <FILTER ANY="true" FILTER_ID="-5444670081791264798" IRRESOLVABLE="false" NOT="false"/>
+                                </VALUE_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5845542039638425795" NAME="Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <PROPERTY_LISTS>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="access_ip" ID="-6430619085963719273" NAME="Critical Hosts">
+                <VALUES/>
+            </HOST_PROPERTY_LIST>
+        </PROPERTY_LISTS>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
