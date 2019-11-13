@@ -15,3 +15,7 @@ Each policy folder will have a README.md file that will describe what the policy
     - Policy to chcek status of the Altiris Services and whether or not they are working. Checks for the AEXNSAgent service running or not
 - Windows Version Policy
     - Policy to grab the exact Windows 10 version by running a script to grab the full Windows version
+- Network Change Policies
+    - Group of policies to track changes on the network
+- Cisco SGT Readiness Check
+    - Policy set to track readiness of devices to go to SGT
