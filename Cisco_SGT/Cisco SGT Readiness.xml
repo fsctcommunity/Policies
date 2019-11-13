@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1468327087600705970" META_TYPE="COMPLY" NAME="Cisco SGT Readiness" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Cisco SGT Readiness-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_desc" LABEL="Switch Port Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                <FILTER CASE_SENSITIVE="false" FILTER_ID="2556772970926610874" TYPE="equals">
+                    <VALUE VALUE2="Switch Device"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="7517890569597825489" NAME="Forecout Managed">
+            <RANGE FROM="10.1.1.0" TO="10.1.1.255"/>
+            <RANGE FROM="10.42.0.0" TO="10.42.199.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5968466110657309491" NAME="SGT Listener Compatible" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: SGT Listener Compatible-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_netfunc_os" LABEL="System Description" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="4690387015237119265" LINKED="true">
+                            <LINK ID="5872967330409688330"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="3754842533083864157" NAME="SGT Speaker Compatible" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: SGT Speaker Compatible-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_netfunc_os" LABEL="System Description" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="5626655798892440486" LINKED="true">
+                            <LINK ID="1200388916424186359"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-9123668057673091029" NAME="SGT Listener Incompatible - IOS Upgrade Required" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: SGT Listener Incompatible - IOS Upgrade Required-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_netfunc_os" LABEL="System Description" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="4679775104098190829" LINKED="true">
+                            <LINK ID="6939444683345773215"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8058634226232330149" NAME="SGT Speaker Incompatible - IOS Upgrade Required" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: SGT Speaker Incompatible - IOS Upgrade Required-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_netfunc_os" LABEL="System Description" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1313672372967776657" LINKED="true">
+                            <LINK ID="-8249427857253969335"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7533957113258335768" NAME="SGT Incompatible - Device Replacement Required" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: SGT Incompatible - Device Replacement Required-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_netfunc_os" LABEL="System Description" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.13.2" PLUGIN_VESRION_NUMBER="81302159" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-8581705196064618460" LINKED="true">
+                            <LINK ID="-3753136708970085509"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.2-64" CACHE_TTL="2592000" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="4393295163844213073" NAME="SGT Compatibility Undefined" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <PROPERTY_LISTS>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_netfunc_os" ID="5872967330409688330" NAME="SGT Listener Compatible">
+                <VALUES/>
+            </HOST_PROPERTY_LIST>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_netfunc_os" ID="-8249427857253969335" NAME="SGT Speaker Incompatible - IOS Upgrade Required">
+                <VALUES>
+                    <VALUE VALUE="Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 12.2(58)SE2, RELEASE SOFTWARE (fc1)&#13;Technical Support: http://www.cisco.com/techsupport&#13;Copyright (c) 1986-2011 by Cisco Systems, Inc.&#13;Compiled Thu 21-Jul-11 02:13 by prod_rel_team"/>
+                </VALUES>
+            </HOST_PROPERTY_LIST>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_netfunc_os" ID="-3753136708970085509" NAME="SGT Incompatible - Device Replacement Required">
+                <VALUES/>
+            </HOST_PROPERTY_LIST>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_netfunc_os" ID="1200388916424186359" NAME="SGT Speaker Compatible">
+                <VALUES/>
+            </HOST_PROPERTY_LIST>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="sw_netfunc_os" ID="6939444683345773215" NAME="SGT Listener Incompatible - IOS Upgrade Required">
+                <VALUES/>
+            </HOST_PROPERTY_LIST>
+        </PROPERTY_LISTS>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
