@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-3420968741650418814" NAME="Assessment | Windows | Chassis Type" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER>
+            <GROUP ID="5438293333402205374" NAME="Windows Managed Devices"/>
+        </GROUP_IN_FILTER>
+        <INACTIVITY_TTL TTL="518400000" USE_DEFAULT="false"/>
+        <ADMISSION_RESOLVE_DELAY TTL="60000" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="518400" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="259200" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="8859775732565214074" NAME="AWS Corporate VPC">
+            <RANGE FROM="10.210.0.0" TO="10.210.0.255"/>
+            <RANGE FROM="10.211.0.0" TO="10.212.0.255"/>
+            <RANGE FROM="10.213.0.0" TO="10.213.255.255"/>
+            <RANGE FROM="10.215.0.0" TO="10.215.255.255"/>
+        </SEGMENT>
+        <SEGMENT ID="-3156966900141645929" NAME="Corporate Offices">
+            <RANGE FROM="10.5.1.1" TO="10.5.1.254"/>
+            <RANGE FROM="10.10.1.0" TO="10.10.2.255"/>
+            <RANGE FROM="10.20.1.0" TO="10.20.1.255"/>
+            <RANGE FROM="10.21.1.1" TO="10.21.1.254"/>
+            <RANGE FROM="10.21.2.0" TO="10.21.3.255"/>
+            <RANGE FROM="10.21.6.1" TO="10.21.7.254"/>
+            <RANGE FROM="10.25.1.1" TO="10.25.1.254"/>
+            <RANGE FROM="10.31.1.1" TO="10.31.1.254"/>
+            <RANGE FROM="10.32.1.1" TO="10.32.1.254"/>
+            <RANGE FROM="10.45.1.1" TO="10.45.1.254"/>
+            <RANGE FROM="10.45.10.1" TO="10.45.10.254"/>
+            <RANGE FROM="10.45.11.1" TO="10.45.11.254"/>
+            <RANGE FROM="10.45.12.1" TO="10.45.12.254"/>
+            <RANGE FROM="10.45.13.1" TO="10.45.13.254"/>
+            <RANGE FROM="10.45.14.1" TO="10.45.14.254"/>
+            <RANGE FROM="10.45.16.0" TO="10.45.16.255"/>
+            <RANGE FROM="10.45.20.1" TO="10.45.20.254"/>
+            <RANGE FROM="10.45.21.1" TO="10.45.21.254"/>
+            <RANGE FROM="10.45.22.1" TO="10.45.22.254"/>
+            <RANGE FROM="10.45.23.1" TO="10.45.23.254"/>
+            <RANGE FROM="10.45.24.1" TO="10.45.24.254"/>
+            <RANGE FROM="10.45.25.1" TO="10.45.25.254"/>
+            <RANGE FROM="10.45.26.1" TO="10.45.26.254"/>
+            <RANGE FROM="10.45.28.1" TO="10.45.28.254"/>
+            <RANGE FROM="10.45.29.1" TO="10.45.29.254"/>
+            <RANGE FROM="10.45.30.1" TO="10.45.30.254"/>
+            <RANGE FROM="10.45.31.1" TO="10.45.31.254"/>
+            <RANGE FROM="10.45.33.1" TO="10.45.33.254"/>
+            <RANGE FROM="10.45.34.1" TO="10.45.34.254"/>
+            <RANGE FROM="10.45.35.1" TO="10.45.35.254"/>
+            <RANGE FROM="10.45.36.1" TO="10.45.36.254"/>
+            <RANGE FROM="10.45.37.1" TO="10.45.37.254"/>
+            <RANGE FROM="10.45.40.1" TO="10.45.40.254"/>
+            <RANGE FROM="10.45.41.1" TO="10.45.41.254"/>
+            <RANGE FROM="10.45.42.1" TO="10.45.42.254"/>
+            <RANGE FROM="10.45.44.1" TO="10.45.44.254"/>
+            <RANGE FROM="10.45.46.1" TO="10.45.46.254"/>
+            <RANGE FROM="10.45.47.1" TO="10.45.47.254"/>
+            <RANGE FROM="10.45.49.1" TO="10.45.49.254"/>
+            <RANGE FROM="10.45.50.0" TO="10.45.50.255"/>
+            <RANGE FROM="10.53.1.1" TO="10.53.1.254"/>
+            <RANGE FROM="10.60.1.1" TO="10.60.1.254"/>
+            <RANGE FROM="10.60.2.1" TO="10.60.2.254"/>
+            <RANGE FROM="10.61.1.0" TO="10.61.1.255"/>
+            <RANGE FROM="10.62.1.0" TO="10.62.1.255"/>
+            <RANGE FROM="10.63.1.0" TO="10.63.1.255"/>
+            <RANGE FROM="10.64.1.0" TO="10.64.1.255"/>
+            <RANGE FROM="10.66.0.0" TO="10.66.1.254"/>
+            <RANGE FROM="10.70.1.1" TO="10.70.4.254"/>
+            <RANGE FROM="10.70.5.0" TO="10.70.5.255"/>
+            <RANGE FROM="10.100.1.0" TO="10.100.1.255"/>
+            <RANGE FROM="10.100.68.1" TO="10.100.68.254"/>
+            <RANGE FROM="10.100.69.1" TO="10.100.69.254"/>
+            <RANGE FROM="10.101.23.0" TO="10.101.23.255"/>
+            <RANGE FROM="10.101.31.0" TO="10.101.32.255"/>
+            <RANGE FROM="10.101.60.0" TO="10.101.60.255"/>
+            <RANGE FROM="10.101.68.0" TO="10.101.70.255"/>
+            <RANGE FROM="10.101.131.0" TO="10.101.132.255"/>
+            <RANGE FROM="10.101.250.0" TO="10.101.251.255"/>
+            <RANGE FROM="10.112.0.1" TO="10.112.15.254"/>
+            <RANGE FROM="10.145.1.0" TO="10.145.1.255"/>
+            <RANGE FROM="10.145.10.0" TO="10.145.12.255"/>
+            <RANGE FROM="10.145.13.1" TO="10.145.13.255"/>
+            <RANGE FROM="10.145.20.0" TO="10.145.20.255"/>
+            <RANGE FROM="10.145.21.1" TO="10.145.21.254"/>
+            <RANGE FROM="10.145.22.0" TO="10.145.22.255"/>
+            <RANGE FROM="10.145.23.1" TO="10.145.23.254"/>
+            <RANGE FROM="10.145.24.1" TO="10.145.24.254"/>
+            <RANGE FROM="10.145.25.1" TO="10.145.25.126"/>
+            <RANGE FROM="10.145.26.1" TO="10.145.26.254"/>
+            <RANGE FROM="10.145.28.0" TO="10.145.28.255"/>
+            <RANGE FROM="10.145.29.1" TO="10.145.29.254"/>
+            <RANGE FROM="10.145.30.1" TO="10.145.30.254"/>
+            <RANGE FROM="10.145.31.1" TO="10.145.31.254"/>
+            <RANGE FROM="10.145.33.1" TO="10.145.33.254"/>
+            <RANGE FROM="10.145.34.1" TO="10.145.34.254"/>
+            <RANGE FROM="10.145.35.1" TO="10.145.35.254"/>
+            <RANGE FROM="10.145.36.1" TO="10.145.36.254"/>
+            <RANGE FROM="10.145.37.1" TO="10.145.37.254"/>
+            <RANGE FROM="10.145.40.1" TO="10.145.40.254"/>
+            <RANGE FROM="10.145.41.1" TO="10.145.41.254"/>
+            <RANGE FROM="10.145.42.1" TO="10.145.42.254"/>
+            <RANGE FROM="10.145.44.1" TO="10.145.44.254"/>
+            <RANGE FROM="10.145.46.1" TO="10.145.46.254"/>
+            <RANGE FROM="10.145.47.1" TO="10.145.47.255"/>
+            <RANGE FROM="10.145.49.1" TO="10.145.49.254"/>
+            <RANGE FROM="10.145.50.0" TO="10.145.50.255"/>
+            <RANGE FROM="10.200.12.0" TO="10.200.12.255"/>
+            <RANGE FROM="10.200.21.0" TO="10.200.21.255"/>
+            <RANGE FROM="10.200.31.0" TO="10.200.33.254"/>
+            <RANGE FROM="10.200.34.1" TO="10.200.34.254"/>
+            <RANGE FROM="10.200.35.0" TO="10.200.35.255"/>
+            <RANGE FROM="10.200.36.1" TO="10.200.36.254"/>
+            <RANGE FROM="10.200.37.1" TO="10.200.37.254"/>
+            <RANGE FROM="10.200.38.1" TO="10.200.38.254"/>
+            <RANGE FROM="10.200.61.0" TO="10.200.62.255"/>
+            <RANGE FROM="10.200.63.1" TO="10.200.63.254"/>
+            <RANGE FROM="10.200.64.1" TO="10.200.64.254"/>
+            <RANGE FROM="10.200.79.1" TO="10.200.79.254"/>
+            <RANGE FROM="10.200.101.0" TO="10.200.101.255"/>
+            <RANGE FROM="10.200.112.1" TO="10.200.127.254"/>
+            <RANGE FROM="10.200.131.0" TO="10.200.133.255"/>
+            <RANGE FROM="10.200.134.1" TO="10.200.134.254"/>
+            <RANGE FROM="10.200.135.0" TO="10.200.135.255"/>
+            <RANGE FROM="10.200.136.1" TO="10.200.136.254"/>
+            <RANGE FROM="10.200.137.1" TO="10.200.137.254"/>
+            <RANGE FROM="10.200.138.1" TO="10.200.138.254"/>
+            <RANGE FROM="10.200.170.0" TO="10.200.170.255"/>
+            <RANGE FROM="10.200.172.1" TO="10.200.172.254"/>
+            <RANGE FROM="10.200.173.1" TO="10.200.173.254"/>
+            <RANGE FROM="10.200.174.1" TO="10.200.174.254"/>
+            <RANGE FROM="10.200.190.0" TO="10.200.190.255"/>
+            <RANGE FROM="10.201.10.0" TO="10.201.11.255"/>
+            <RANGE FROM="10.201.23.1" TO="10.201.23.254"/>
+            <RANGE FROM="10.201.27.1" TO="10.201.28.254"/>
+            <RANGE FROM="10.201.31.0" TO="10.201.32.254"/>
+            <RANGE FROM="10.201.62.1" TO="10.201.62.254"/>
+            <RANGE FROM="10.201.63.1" TO="10.201.63.254"/>
+            <RANGE FROM="10.201.64.1" TO="10.201.64.254"/>
+            <RANGE FROM="10.201.70.0" TO="10.201.70.255"/>
+            <RANGE FROM="10.201.80.1" TO="10.201.80.254"/>
+            <RANGE FROM="10.201.81.1" TO="10.201.81.254"/>
+            <RANGE FROM="10.201.100.0" TO="10.201.100.255"/>
+            <RANGE FROM="10.201.131.0" TO="10.201.131.255"/>
+            <RANGE FROM="10.201.132.1" TO="10.201.132.254"/>
+            <RANGE FROM="10.201.160.1" TO="10.201.160.255"/>
+            <RANGE FROM="10.201.190.0" TO="10.201.190.255"/>
+            <RANGE FROM="10.202.10.0" TO="10.202.10.255"/>
+            <RANGE FROM="10.202.25.0" TO="10.202.25.255"/>
+            <RANGE FROM="10.202.28.30" TO="10.202.28.240"/>
+            <RANGE FROM="10.202.30.0" TO="10.202.30.255"/>
+            <RANGE FROM="10.202.60.0" TO="10.202.60.255"/>
+            <RANGE FROM="10.202.62.0" TO="10.202.62.255"/>
+            <RANGE FROM="10.202.63.30" TO="10.202.63.230"/>
+            <RANGE FROM="10.202.64.1" TO="10.202.64.254"/>
+            <RANGE FROM="10.202.70.0" TO="10.202.70.255"/>
+            <RANGE FROM="10.202.75.0" TO="10.202.75.255"/>
+            <RANGE FROM="10.202.90.0" TO="10.202.90.255"/>
+            <RANGE FROM="10.202.112.1" TO="10.202.127.254"/>
+            <RANGE FROM="10.202.130.0" TO="10.202.130.255"/>
+            <RANGE FROM="10.204.10.0" TO="10.204.10.255"/>
+            <RANGE FROM="10.204.22.0" TO="10.204.22.255"/>
+            <RANGE FROM="10.204.30.1" TO="10.204.30.254"/>
+            <RANGE FROM="10.204.31.1" TO="10.204.31.254"/>
+            <RANGE FROM="10.204.32.1" TO="10.204.32.254"/>
+            <RANGE FROM="10.204.33.1" TO="10.204.33.254"/>
+            <RANGE FROM="10.204.34.1" TO="10.204.34.254"/>
+            <RANGE FROM="10.204.60.0" TO="10.204.60.255"/>
+            <RANGE FROM="10.204.62.0" TO="10.204.62.255"/>
+            <RANGE FROM="10.204.66.0" TO="10.204.67.254"/>
+            <RANGE FROM="10.204.71.0" TO="10.204.71.254"/>
+            <RANGE FROM="10.204.72.0" TO="10.204.72.254"/>
+            <RANGE FROM="10.204.84.1" TO="10.204.84.254"/>
+            <RANGE FROM="10.204.100.0" TO="10.204.100.255"/>
+            <RANGE FROM="10.204.112.0" TO="10.204.127.255"/>
+            <RANGE FROM="10.204.130.0" TO="10.204.132.255"/>
+            <RANGE FROM="10.204.133.1" TO="10.204.133.254"/>
+            <RANGE FROM="10.204.134.1" TO="10.204.134.254"/>
+            <RANGE FROM="10.205.21.0" TO="10.205.22.255"/>
+            <RANGE FROM="10.205.27.1" TO="10.205.28.254"/>
+            <RANGE FROM="10.205.31.0" TO="10.205.31.255"/>
+            <RANGE FROM="10.205.61.0" TO="10.205.62.255"/>
+            <RANGE FROM="10.205.63.1" TO="10.205.63.254"/>
+            <RANGE FROM="10.205.101.0" TO="10.205.101.255"/>
+            <RANGE FROM="10.205.131.0" TO="10.205.131.255"/>
+            <RANGE FROM="10.205.170.1" TO="10.205.170.254"/>
+            <RANGE FROM="10.205.171.0" TO="10.205.171.255"/>
+            <RANGE FROM="10.205.190.0" TO="10.205.190.255"/>
+            <RANGE FROM="10.206.10.1" TO="10.206.10.254"/>
+            <RANGE FROM="10.206.27.1" TO="10.206.28.254"/>
+            <RANGE FROM="10.206.30.1" TO="10.206.30.254"/>
+            <RANGE FROM="10.206.62.1" TO="10.206.62.254"/>
+            <RANGE FROM="10.206.63.1" TO="10.206.63.254"/>
+            <RANGE FROM="10.206.64.1" TO="10.206.64.254"/>
+            <RANGE FROM="10.206.70.1" TO="10.206.70.254"/>
+            <RANGE FROM="10.206.80.1" TO="10.206.80.254"/>
+            <RANGE FROM="10.206.91.1" TO="10.206.91.254"/>
+            <RANGE FROM="10.206.100.1" TO="10.206.100.254"/>
+            <RANGE FROM="10.208.22.1" TO="10.208.22.254"/>
+            <RANGE FROM="10.208.27.30" TO="10.208.27.249"/>
+            <RANGE FROM="10.208.30.1" TO="10.208.30.254"/>
+            <RANGE FROM="10.208.60.1" TO="10.208.60.254"/>
+            <RANGE FROM="10.208.62.1" TO="10.208.62.254"/>
+            <RANGE FROM="10.208.64.1" TO="10.208.64.254"/>
+            <RANGE FROM="10.208.66.1" TO="10.208.66.254"/>
+            <RANGE FROM="10.208.70.1" TO="10.208.70.254"/>
+            <RANGE FROM="10.208.100.1" TO="10.208.100.254"/>
+            <RANGE FROM="10.208.112.1" TO="10.208.127.254"/>
+            <RANGE FROM="10.208.130.1" TO="10.208.130.254"/>
+            <RANGE FROM="10.208.190.1" TO="10.208.190.254"/>
+            <RANGE FROM="10.209.10.0" TO="10.209.10.255"/>
+            <RANGE FROM="10.209.23.0" TO="10.209.23.255"/>
+            <RANGE FROM="10.209.27.0" TO="10.209.27.255"/>
+            <RANGE FROM="10.209.30.0" TO="10.209.30.255"/>
+            <RANGE FROM="10.209.60.0" TO="10.209.60.255"/>
+            <RANGE FROM="10.209.63.0" TO="10.209.64.255"/>
+            <RANGE FROM="10.209.68.0" TO="10.209.70.255"/>
+            <RANGE FROM="10.209.100.0" TO="10.209.100.255"/>
+            <RANGE FROM="10.209.112.0" TO="10.209.127.255"/>
+            <RANGE FROM="10.209.130.0" TO="10.209.130.255"/>
+            <RANGE FROM="192.168.0.0" TO="192.168.15.254"/>
+            <RANGE FROM="192.168.16.0" TO="192.168.31.255"/>
+            <RANGE FROM="192.168.32.1" TO="192.168.35.254"/>
+            <RANGE FROM="192.168.37.1" TO="192.168.37.254"/>
+            <RANGE FROM="192.168.38.1" TO="192.168.39.254"/>
+            <RANGE FROM="192.168.68.0" TO="192.168.72.255"/>
+            <RANGE FROM="192.168.120.1" TO="192.168.120.254"/>
+            <RANGE FROM="192.168.206.1" TO="192.168.206.254"/>
+            <RANGE FROM="192.168.208.1" TO="192.168.208.254"/>
+            <RANGE FROM="192.168.240.0" TO="192.168.255.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8750680015820010900" NAME="Rack Mount" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="864000" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Rack Mount-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3465173985206277916" TYPE="contains">
+                            <VALUE VALUE2="Rack Mount"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-8344749679593635483;name:Windows Rack Mount"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5636430312561836559" NAME="Maybe Virtual" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="864000" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Maybe Virtual-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="2893808732703271061" TYPE="contains">
+                            <VALUE VALUE2="Maybe Virtual machine"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:2917703019715512868;name:Windows Virtual Machine"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2189356751192655421" NAME="Desktop" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="864000" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Desktop-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hwi_computer" LABEL="Computer" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Hardware Inventory" PLUGIN_UNIQUE_NAME="hwi" PLUGIN_VESRION="1.1.0" PLUGIN_VESRION_NUMBER="11000011" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="hwi_computer" FILTER_ID="3801742554709642592">
+                                <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="007183ac7904c396d6f226bc60d8085f" SUB_FIELD_NAME="pc_system_type">
+                                    <OPT VALUE="1"/>
+                                    <OPT VALUE="3"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-3618020926442541338" TYPE="contains">
+                                <VALUE VALUE2="Desktop"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-1971362359726269119" TYPE="contains">
+                                <VALUE VALUE2="Tower"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="3465173985206277916" TYPE="contains">
+                                <VALUE VALUE2="Rack Mount"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:593405248592605266;name:Windows Desktop"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5947327118648207168" NAME="Laptop" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="864000" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Laptop-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="hwi_computer" LABEL="Computer" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Hardware Inventory" PLUGIN_UNIQUE_NAME="hwi" PLUGIN_VESRION="1.1.0" PLUGIN_VESRION_NUMBER="11000011" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="hwi_computer" FILTER_ID="3560628986478499882">
+                                <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="007183ac7904c396d6f226bc60d8085f" SUB_FIELD_NAME="pc_system_type">
+                                    <OPT VALUE="2"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5772557337393501850" TYPE="contains">
+                                <VALUE VALUE2="Laptop"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8987177966031711041" TYPE="contains">
+                                <VALUE VALUE2="Notebook"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2056175332831960559" TYPE="contains">
+                                <VALUE VALUE2="Portable"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="7377421140388209111" TYPE="contains">
+                                <VALUE VALUE2="Docking Station"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.22ed140d8d923eb8873146906246b323" LABEL="Windows Expected Script Result Run Interactive:false, Command or Script file:Chassis_Type.vbs" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.0.3" PLUGIN_VESRION_NUMBER="110030009" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FIELD METANAME="script_result" NAME="script_result.22ed140d8d923eb8873146906246b323">
+                                <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Chassis_Type.vbs"/>
+                            </FIELD>
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="6733032582573197339" TYPE="contains">
+                                <VALUE VALUE2="Peripheral Chassis"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:8898527898070705900;name:Windows Laptop"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.3-57" CACHE_TTL="518400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7556550613814598308" NAME="Other" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="518400" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
