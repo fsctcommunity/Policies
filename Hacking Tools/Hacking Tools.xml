@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="7.0.0-513" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-3780617452026046936" META_TYPE="COMPLY" NAME="Hacking Tools" NOT_COND_UPDATE="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: 3.9.1 Hacking Tools-->
+            <CONDITION FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="3579598256534725606">
+                    <GROUP ID="5438293333402205374" NAME="Managed Windows Devices"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="7.0.0-513" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="560399973392835135" NAME="No Hacking Tools Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="COMPLY"/>
+                <EXPRESSION EXPR_TYPE="NOT">
+                    <!--Rule expression. Rule name is: No Hacking Tools Installed-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION FIELD_NAME="comp_application" LABEL="Applications Installed" LEFT_PARENTHESIS="0" LOGIC="AND" NOT="true" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.2.1" PLUGIN_VESRION_NUMBER="5360" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER COMP_FIELD_NAME="comp_application" FILTER_ID="291842791892531881">
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="app_version" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="app_user" TYPE="any">
+                                    <VALUE VALUE=".*" VALUE2="Any"/>
+                                </SUB_FILTER>
+                                <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" LINKED="true" MEETS="true" SUB_FIELD_NAME="app_name">
+                                    <LINK ID="3966603656964847687"/>
+                                </SUB_FILTER>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="7.0.0-513" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6689971446181000416" NAME="Hacking Tools Installed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Hacking Tools Installed-->
+                    <CONDITION FIELD_NAME="comp_application" LABEL="Applications Installed" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.2.1" PLUGIN_VESRION_NUMBER="5360" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="comp_application" FILTER_ID="-3979920038557477037">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="app_version" TYPE="any">
+                                <VALUE VALUE=".*" VALUE2="Any"/>
+                            </SUB_FILTER>
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" REGEXP="true" SUB_FIELD_NAME="app_user" TYPE="any">
+                                <VALUE VALUE=".*" VALUE2="Any"/>
+                            </SUB_FILTER>
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" LINKED="true" MEETS="true" SUB_FIELD_NAME="app_name">
+                                <LINK ID="3966603656964847687"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <PARAM NAME="group-name" VALUE="id:4790399048271977488;name:Suspicious Hosts"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="7.0.0-513" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8702847698422556532" NAME="Irresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <PROPERTY_LISTS>
+            <HOST_PROPERTY_LIST DESCRIPTION="" FIELD="comp_application/app_name" ID="3966603656964847687" NAME="Hacking Tools">
+                <VALUES>
+                    <VALUE VALUE="Accent OFFICE Password Recovery"/>
+                    <VALUE VALUE="Ziperello"/>
+                    <VALUE VALUE="Password Recovery for Digsby"/>
+                    <VALUE VALUE="XaviWare Google Mail Password Recovery"/>
+                    <VALUE VALUE="SysTools PDF Unlocker"/>
+                    <VALUE VALUE="XaviWare Facebook Password Recovery"/>
+                    <VALUE VALUE="Internet Explorer Password Recovery Master"/>
+                    <VALUE VALUE="LiveMailPasswordDecryptor (portable)"/>
+                    <VALUE VALUE="XaviWare Twitter Password Recovery"/>
+                    <VALUE VALUE="Max2k ShowPass"/>
+                    <VALUE VALUE="PicoZip Recovery Tool"/>
+                    <VALUE VALUE="SpotAuditor"/>
+                    <VALUE VALUE="Thegrideon Software Outlook Password"/>
+                    <VALUE VALUE="Passcape Windows Password Recovery"/>
+                    <VALUE VALUE="NirSoft Mail PassView"/>
+                    <VALUE VALUE="SpotDialup"/>
+                    <VALUE VALUE="ElcomSoft Proactive System Password Recovery"/>
+                    <VALUE VALUE="Instant Messengers Password Recovery Master"/>
+                    <VALUE VALUE="Advanced Office XP Password Recovery"/>
+                    <VALUE VALUE="Password Reveal Pro"/>
+                    <VALUE VALUE="abylon READER"/>
+                    <VALUE VALUE="Vodusoft ZIP Password Recovery"/>
+                    <VALUE VALUE="Easy Pdf Password Recovery"/>
+                    <VALUE VALUE="Outlook Password Unlocker"/>
+                    <VALUE VALUE="Ace Password Sniffer"/>
+                    <VALUE VALUE="VBA Password Recovery"/>
+                    <VALUE VALUE="RAR Password Cracker"/>
+                    <VALUE VALUE="BrowserPasswordDecryptor (portable)"/>
+                    <VALUE VALUE="XaviWare Google Chrome Password Recovery"/>
+                    <VALUE VALUE="Easy Excel Password Recovery"/>
+                    <VALUE VALUE="PRS Password Recovery"/>
+                    <VALUE VALUE="ElcomSoft Advanced EFS Data Recovery"/>
+                    <VALUE VALUE="Magic Zip Password Recovery"/>
+                    <VALUE VALUE="Find Password Protected Documents"/>
+                    <VALUE VALUE="Passware Kit"/>
+                    <VALUE VALUE="Asterisk Key"/>
+                    <VALUE VALUE="Date Cracker 2000"/>
+                    <VALUE VALUE="HashKracker (portable)"/>
+                    <VALUE VALUE="Password Discovery"/>
+                    <VALUE VALUE="SpotFTP"/>
+                    <VALUE VALUE="KRryLack RAR Password Recovery"/>
+                    <VALUE VALUE="Project Password by Thegrideon Software"/>
+                    <VALUE VALUE="Opera Master Password Recovery"/>
+                    <VALUE VALUE="PasswordSnifferSpy (portable)"/>
+                    <VALUE VALUE="RAR Password Recovery Magic"/>
+                    <VALUE VALUE="CDKeyExtractor"/>
+                    <VALUE VALUE="Advanced FTP Password Recovery"/>
+                    <VALUE VALUE="iTunesPasswordDecryptor (portable)"/>
+                    <VALUE VALUE="LastBit Word Password"/>
+                    <VALUE VALUE="MailPasswordSniffer (portable)"/>
+                    <VALUE VALUE="SysTools Access Password Recovery Tool"/>
+                    <VALUE VALUE="Intelore RAR Password Recovery"/>
+                    <VALUE VALUE="Remove PowerPoint Password to Modify"/>
+                    <VALUE VALUE="Magic RAR Password Recovery"/>
+                    <VALUE VALUE="Password Recovery Bundle 2010"/>
+                    <VALUE VALUE="Password Recovery Bundle 2011"/>
+                    <VALUE VALUE="ElcomSoft Advanced Archive Password Recovery"/>
+                    <VALUE VALUE="Outlook Express Password Recovery Master"/>
+                    <VALUE VALUE="XaviWare Windows Live Messenger Password Recovery"/>
+                    <VALUE VALUE="ElcomSoft Advanced Office Password Breaker"/>
+                    <VALUE VALUE="IE Asterisk Password Uncover"/>
+                    <VALUE VALUE="Passcape Network Password Recovery Wizard"/>
+                    <VALUE VALUE="Atomic ZIP Password Recovery"/>
+                    <VALUE VALUE="Access Password Recovery Master"/>
+                    <VALUE VALUE="XaviWare Safari Password Recovery"/>
+                    <VALUE VALUE="Access Password Recovery Software"/>
+                    <VALUE VALUE="MSN Password Recovery"/>
+                    <VALUE VALUE="ZIP RAR ACE Password Recovery"/>
+                    <VALUE VALUE="Windows Password Buster Standard"/>
+                    <VALUE VALUE="MgoSoft PDF Password Remover"/>
+                    <VALUE VALUE="Access Password Unlocker"/>
+                    <VALUE VALUE="Accent EXCEL Password Recovery"/>
+                    <VALUE VALUE="ElcomSoft Advanced Office Password Recovery"/>
+                    <VALUE VALUE="Asterisk Password by Thegrideon Software"/>
+                    <VALUE VALUE="Word Password Recovery Master"/>
+                    <VALUE VALUE="Skype Password"/>
+                    <VALUE VALUE="Content Advisor Password Eliminator"/>
+                    <VALUE VALUE="Messenger Key"/>
+                    <VALUE VALUE="PDF Password Cracker"/>
+                    <VALUE VALUE="Dlink Password Decryptor (portable)"/>
+                    <VALUE VALUE="Access Password Recovery Genie"/>
+                    <VALUE VALUE="Asterisk Password Decryptor"/>
+                    <VALUE VALUE="SpotChrome"/>
+                    <VALUE VALUE="Passcape Mozilla Password Recovery"/>
+                    <VALUE VALUE="Asterisks Password Recovery"/>
+                    <VALUE VALUE="Mail Password Decryptor (portable)"/>
+                    <VALUE VALUE="Windows Password Buster Enterprise"/>
+                    <VALUE VALUE="Accent WORD Password Recovery"/>
+                    <VALUE VALUE="DecryptMSN"/>
+                    <VALUE VALUE="Password Spyer 2k"/>
+                    <VALUE VALUE="LDAP Password Kracker (portable)"/>
+                    <VALUE VALUE="Cain and Abel"/>
+                    <VALUE VALUE="FireFox Password"/>
+                    <VALUE VALUE="Keyfinder Advanced 2010"/>
+                    <VALUE VALUE="Password &amp; Key Finder"/>
+                    <VALUE VALUE="LCP"/>
+                    <VALUE VALUE="Router Password Kracker (portable)"/>
+                    <VALUE VALUE="SpotIM"/>
+                    <VALUE VALUE="VBA Password Bypasser"/>
+                    <VALUE VALUE="Office Password Recovery Magic"/>
+                    <VALUE VALUE="SpotIE"/>
+                    <VALUE VALUE="Windows Password Cracker"/>
+                    <VALUE VALUE="Ultimate ZIP Cracker"/>
+                    <VALUE VALUE="Windows Password Buster Professional"/>
+                    <VALUE VALUE="Excel Password Recovery Master"/>
+                    <VALUE VALUE="SpotMSN"/>
+                    <VALUE VALUE="Internet Password Recovery Toolbox"/>
+                    <VALUE VALUE="Office Multi-document Password Cracker"/>
+                    <VALUE VALUE="Password Recovery for MSN"/>
+                    <VALUE VALUE="Internet Explorer Password Recovery Utility"/>
+                    <VALUE VALUE="Cisco Password Decryptor (portable)"/>
+                    <VALUE VALUE="Password Recovery for Google"/>
+                    <VALUE VALUE="Password Spectator"/>
+                    <VALUE VALUE="L0phtCrack"/>
+                    <VALUE VALUE="ElcomSoft Advanced IM Password Recovery"/>
+                    <VALUE VALUE="PDFCracker"/>
+                    <VALUE VALUE="Messenger Password Decryptor (portable)"/>
+                    <VALUE VALUE="Unrestrict PDF"/>
+                    <VALUE VALUE="Windows Password Reset Standard"/>
+                    <VALUE VALUE="Visual Zip Password Recovery Processor"/>
+                    <VALUE VALUE="ElcomSoft Advanced PDF Password Recovery"/>
+                    <VALUE VALUE="SysInfoTools IE Password Recovery"/>
+                    <VALUE VALUE="BlackBox Password Manager"/>
+                    <VALUE VALUE="Nucleus Kernel Outlook Express Password Recovery"/>
+                    <VALUE VALUE="Intelore Excel Password Recovery"/>
+                    <VALUE VALUE="Passcovery Suite"/>
+                    <VALUE VALUE="Password Recovery for Windows Live"/>
+                    <VALUE VALUE="Windows Password Recovery Bootdisk"/>
+                    <VALUE VALUE="MSN Live Password Decryptor (portable)"/>
+                    <VALUE VALUE="Internet Explorer Password by Thegrideon Software"/>
+                </VALUES>
+            </HOST_PROPERTY_LIST>
+        </PROPERTY_LISTS>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
