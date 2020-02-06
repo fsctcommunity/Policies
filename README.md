@@ -36,6 +36,5 @@ Each policy folder will have a README.md file that will describe what the policy
 
 - TPM 
 
-Windows Version 10 
- Windows Version Policy
+- Windows Version 10 
   - Policy to grab the exact Windows 10 version by running a script to grab the full Windows version
