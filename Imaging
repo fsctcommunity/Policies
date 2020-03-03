@@ -1,0 +1,155 @@
+<INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8698042958264555865" NAME="Imaging" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                    <!--Rule expression. Rule name is: Imaging-->
+                    <EXPRESSION EXPR_TYPE="OR">
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_class" LABEL="DHCP device class" LEFT_PARENTHESIS="2" LOGIC="AND" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="4563056715129198327" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QNetwork Boot Agents\E" VALUE2="Network Boot Agents"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_os" LABEL="DHCP device OS" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="-3500956999418644266" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QPXE\E" VALUE2="PXE"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" LABEL="DHCP Vendor Class" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="7097788383880312568" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QPXEClient:Arch\E.*" VALUE2="PXEClient:Arch"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="-8529720400546275424" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWORKGROUP\E" VALUE2="WORKGROUP"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_hostname" LABEL="DHCP Hostname" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="830002842894372164" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QMININT\E.*" VALUE2="MININT"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbthost" LABEL="NetBIOS Hostname" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="7021140097646682920" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QMININT\E.*" VALUE2="MININT"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="6920136830622209253" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWORKGROUP\E" VALUE2="WORKGROUP"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="7893507671264413796" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q60\E.*" VALUE2="60"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3978600259425277343" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q66\E.*" VALUE2="66"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="9050764519712846557" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q67\E.*" VALUE2="67"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" INNER_NOT="true" LABEL="Member of Group" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="2987434178165241430">
+                                                <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="2">
+                                            <FILTER FILTER_ID="-6115669304393064713" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="14400"/>
+                                            <FILTER CASE_SENSITIVE="true" FILTER_ID="3238371140349374720" REGEXP="true" TYPE="equals">
+                                                <VALUE VALUE="\QImaging\E" VALUE2="Imaging"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_unlabel_action">
+                    <PARAM NAME="regexp" VALUE="false"/>
+                    <PARAM NAME="ignorecase" VALUE="true"/>
+                    <PARAM NAME="label" VALUE="imaging"/>
+                    <SCHEDULE>
+                        <START Class="Delayed" TIMEPERIOD="4 HOUR"/>
+                        <OCCURENCE onEvery="52 WEEK" onStart="true"/>
+                        <END AFTERN="1" Class="EndAfterN"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="Imaging"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onEvery="52 WEEK" onStart="true"/>
+                        <END AFTERN="1" Class="EndAfterN"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="false"/>
+                    <PARAM NAME="group-name" VALUE="id:1665759776821674622;name:Previously Imaged"/>
+                    <PARAM NAME="item_key" VALUE="mac"/>
+                    <PARAM NAME="comment" VALUE="Previously Imaged Device"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                </EXCEPTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
