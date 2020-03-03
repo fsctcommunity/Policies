@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This policy runs on the &quot;Windows&quot; group that is maintained by the 1.1 OS Classification\Windows sub-policy.  All detected Windows devices are evaluated for manageability at this stage.&#10;&#10;When Windows devices are not manageable by CounterACT the remaining sub-policies use various available attributes to separate possible corporate machines needing maintenance from suspected guests and known unauthorized windows devices.&#10;&#10;Managed machines are passed to compliance policies via the &quot;Managed Windows Devices&quot; group.&#10;&#10;Unmanaged machines can be restricted/forced to Guest Registration control policies by inserting the appropriate add to group action once control policies are in place and have been fully vetted.&#10;" ENABLED="true" ID="-5353284053974861268" META_TYPE="GUEST" NAME="2.1 Windows OS Clarification" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="420000" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: 2.1 Windows OS Clarification-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="OR" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="8046803086230095473">
+                    <GROUP ID="3877501040455778080" NAME="Windows"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-1" NAME="ALL">
+            <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="OT Equipment not Identified earlier in Asset Classification" ID="-1780037511022966003" NAME="OT Workstations" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: OT Workstations-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_vendor_string" LABEL="NIC Vendor Value" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="18.0.12" PLUGIN_VESRION_NUMBER="180120006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-6810556344594209159" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QFUJITSU TECHNOLOGY SOLUTIONS GMBH\E.*" VALUE2="FUJITSU TECHNOLOGY SOLUTIONS GMBH"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="mac_vendor_string" LABEL="NIC Vendor Value" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="18.0.12" PLUGIN_VESRION_NUMBER="180120006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="7800519002806757475" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QSCHNEIDER ELECTRIC\E.*" VALUE2="SCHNEIDER ELECTRIC"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Device Profile Library" PLUGIN_UNIQUE_NAME="profiles" PLUGIN_VESRION="19.0.9" PLUGIN_VESRION_NUMBER="190090002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="5951592253210174016" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="18.0.12" PLUGIN_VESRION_NUMBER="180120006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER AUTO_UPDATE="false" FILTER_ID="1941219397288719509" OPTIONS_DIGEST="606579a72d92e12407b0c86ddd0c7df5">
+                                <OPT VALUE="algorithmics ltd."/>
+                                <OPT VALUE="fujitsu cloud technologies limited"/>
+                                <OPT VALUE="fujitsu connected technologies limited"/>
+                                <OPT VALUE="fujitsu denso ltd."/>
+                                <OPT VALUE="fujitsu general limited"/>
+                                <OPT VALUE="fujitsu i-network systems limited."/>
+                                <OPT VALUE="fujitsu isotec limited"/>
+                                <OPT VALUE="fujitsu limited"/>
+                                <OPT VALUE="fujitsu microelectronics, inc."/>
+                                <OPT VALUE="fujitsu nexion, inc."/>
+                                <OPT VALUE="fujitsu services ltd"/>
+                                <OPT VALUE="fujitsu siemens computers"/>
+                                <OPT VALUE="fujitsu softek"/>
+                                <OPT VALUE="fujitsu technology solutions gmbh"/>
+                                <OPT VALUE="hmi sources ltd."/>
+                                <OPT VALUE="keyence corporation"/>
+                                <OPT VALUE="nanjing fujitsu computer products co.,ltd."/>
+                                <OPT VALUE="r. stahl hmi systems gmbh"/>
+                                <OPT VALUE="schmid telecommunication"/>
+                                <OPT VALUE="schmitt industries"/>
+                                <OPT VALUE="hmi technologies"/>
+                                <OPT VALUE="pressol schmiergeraete gmbh"/>
+                                <OPT VALUE="schmid electronic"/>
+                                <OPT VALUE="rockwell automation"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan" LABEL="Switch Port VLAN" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.2.2528" PLUGIN_VESRION_NUMBER="81202528" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="8115879030530865353">
+                                <RANGE FROM="73" TO="73"/>
+                                <RANGE FROM="76" TO="76"/>
+                                <RANGE FROM="173" TO="173"/>
+                                <RANGE FROM="176" TO="176"/>
+                                <RANGE FROM="1502" TO="1502"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.2.2528" PLUGIN_VESRION_NUMBER="81202528" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="4492764149749715949" REGEXP="true" TYPE="equals">
+                                <VALUE VALUE="\Qprocess\E" VALUE2="process"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.2.2528" PLUGIN_VESRION_NUMBER="81202528" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="1676263208086634260" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qhmi\E.*" VALUE2="hmi"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_vlan_name" LABEL="Switch Port VLAN Name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.2.2528" PLUGIN_VESRION_NUMBER="81202528" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8094569078401421397" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qplc\E.*" VALUE2="plc"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:6694369440890207719;name: Unmanaged and Authorized"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="false"/>
+                    <PARAM NAME="group-name" VALUE="id:-2;name:Properties - Passive Learning"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE="add to passive learning from OT policy in Windows Clarification"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1745981003708430542" NAME="Secure Connector Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Secure Connector Managed-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="manage_agent" LABEL="Windows Manageable SecureConnector" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-586450984633176816" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="idmgr_mark" LABEL="Windows Manageable SecureConnector (via any interface)" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="66952229276055296" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:5845763381575873909;name: MANAGED"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Machines managed via the Host Property Scanner Domain Credentials are added the &quot;Managed Windows Devices&quot; group." ID="462087337052695675" NAME="Domain Managed (Current)" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="CORPORATE"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Domain Managed (Current)-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="manage_domain_strict" LABEL="Windows Manageable Domain (Current)" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="5376196150846170605" VALUE="true"/>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:5845763381575873909;name: MANAGED"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-policy identifies machines that have changed state and are not currently manageable&#10;&#10;This can identify possible issues with the Windows infrastructure and should be investigated for root cause.&#10;&#10;This is also a safety mechanism to keep corporate hosts from becoming restricted if such a condition is detected." ID="7402507449834873663" NAME="Partially Domain Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="1800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="CORPORATE"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Partially Domain Managed-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="manage" LABEL="Windows Manageable Domain" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="4376651414583178424" VALUE="true"/>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:6694369440890207719;name: Unmanaged and Authorized"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This sub-policy identifies machines that are members of a Domain defined in the PS plugin but are not manageable.&#10;&#10;Typically these machines need maintenance to become managed, or should be manually exempted after approval." ID="-5946140109716473277" NAME="Domain Member Not Managed" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="CORPORATE"/>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Domain Member Not Managed-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="part_of_domain" LABEL="Windows Domain Member" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-326840290926157579" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-5517021176507354215" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QOPCO\E.*" VALUE2="OPCO"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="manage_change" LABEL="Windows Manageable Domain Change" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="2353171642867779556" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                            <FILTER FILTER_ID="-945731795729143750" NEW_BOOLEAN_VALUE="FALSE"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="manage_domain_strict_change" LABEL="Windows Manageable Domain (Current) Change" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="2723303885812688116" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="1209600"/>
+                            <FILTER FILTER_ID="-2263232791313110041" NEW_BOOLEAN_VALUE="FALSE"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This contains UTS or managed servers." ID="-5344050509534008547" NAME="Unmanaged but Authorized Servers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Unmanaged but Authorized Servers-->
+                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="5255970901403127304" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\QData-Center\E.*" VALUE2="Data-Center"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                    <FILTER CASE_SENSITIVE="false" FILTER_ID="-5540993554924575132" REGEXP="true" TYPE="contains">
+                                        <VALUE VALUE=".*\Qserver\E.*" VALUE2="server"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_guest_os" LABEL="Virtual Machine Guest OS" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="VMware vSphere" PLUGIN_UNIQUE_NAME="vmware" PLUGIN_VESRION="2.2.0" PLUGIN_VESRION_NUMBER="22000034" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="2149922199856482697" OPTIONS_DIGEST="5600428647e15ba613ad6b81b80fcd09">
+                                        <OPT VALUE="winNetDatacenterGuest"/>
+                                        <OPT VALUE="winNetStandard64Guest"/>
+                                        <OPT VALUE="windows9Server64Guest"/>
+                                        <OPT VALUE="winNetWebGuest"/>
+                                        <OPT VALUE="winNetStandardGuest"/>
+                                        <OPT VALUE="win2000ServGuest"/>
+                                        <OPT VALUE="winNetEnterprise64Guest"/>
+                                        <OPT VALUE="winNetBusinessGuest"/>
+                                        <OPT VALUE="windows7Server64Guest"/>
+                                        <OPT VALUE="winNetEnterpriseGuest"/>
+                                        <OPT VALUE="windows8Server64Guest"/>
+                                        <OPT VALUE="winNetDatacenter64Guest"/>
+                                        <OPT VALUE="win2000AdvServGuest"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Windows Applications" PLUGIN_UNIQUE_NAME="meta" PLUGIN_VESRION="19.0.2" PLUGIN_VESRION_NUMBER="190020002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-7454238303263900652" OPTIONS_DIGEST="7212c8c02747b756768ea7473f13cf06">
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Standard_RTM"/>
+                                        <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_4"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_2000_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Standard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_2000_Advanced_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition"/>
+                                        <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1_v.178"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Storage_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_R2_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_2000_Advanced_Server_Service_Pack_4"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_2000_Datacenter_Server"/>
+                                        <OPT VALUE="Windows_2000_Server_Service_Pack_3"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Storage_Server_RTM"/>
+                                        <OPT VALUE="Windows_2000_Server"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_2000_Advanced_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_ServerStandard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows Server 2016 Essentials"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_Foundation"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Foundation"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_2000_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows Server 2016 Datacenter"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_2000_Server_Service_Pack_4"/>
+                                        <OPT VALUE="Windows_2000_Advanced_Server"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_2000_Advanced_Server_Service_Pack_3"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition"/>
+                                        <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_3"/>
+                                        <OPT VALUE="Windows_Server_2012_Standard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows Server 2016 Standard"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_1"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Profile Library" PLUGIN_UNIQUE_NAME="profiles" PLUGIN_VESRION="19.0.9" PLUGIN_VESRION_NUMBER="190090002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                    <FILTER FILTER_ID="2143967429767581751" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2012"/>
+                                        <PATH VALUE="Windows/Windows Server 2008 R2"/>
+                                        <PATH VALUE="Windows/Windows Server 2012 R2"/>
+                                        <PATH VALUE="Windows/Windows Server 2008"/>
+                                        <PATH VALUE="Windows/Windows Server 2003"/>
+                                        <PATH VALUE="Windows/Windows Server 2016"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:8815673925805617904;name: Unmanaged but Authorized Servers"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2295119091367398722" NAME="Unmanaged and Unauthorized UTS Servers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Unmanaged and Unauthorized UTS Servers-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="segment_name" LABEL="Segment name" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-2610667694535673864" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\QUTS\E.*" VALUE2="UTS"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                        <EXPRESSION EXPR_TYPE="OR">
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vmware_guest_os" LABEL="Virtual Machine Guest OS" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="VMware vSphere" PLUGIN_UNIQUE_NAME="vmware" PLUGIN_VESRION="2.2.0" PLUGIN_VESRION_NUMBER="22000034" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="7301931970907010320" OPTIONS_DIGEST="5600428647e15ba613ad6b81b80fcd09">
+                                        <OPT VALUE="winNetDatacenterGuest"/>
+                                        <OPT VALUE="winNetStandard64Guest"/>
+                                        <OPT VALUE="windows9Server64Guest"/>
+                                        <OPT VALUE="winNetWebGuest"/>
+                                        <OPT VALUE="winNetStandardGuest"/>
+                                        <OPT VALUE="win2000ServGuest"/>
+                                        <OPT VALUE="winNetEnterprise64Guest"/>
+                                        <OPT VALUE="winNetBusinessGuest"/>
+                                        <OPT VALUE="windows7Server64Guest"/>
+                                        <OPT VALUE="winNetEnterpriseGuest"/>
+                                        <OPT VALUE="windows8Server64Guest"/>
+                                        <OPT VALUE="winNetDatacenter64Guest"/>
+                                        <OPT VALUE="win2000AdvServGuest"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Windows Applications" PLUGIN_UNIQUE_NAME="meta" PLUGIN_VESRION="19.0.2" PLUGIN_VESRION_NUMBER="190020002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                    <FILTER AUTO_UPDATE="false" FILTER_ID="-352939505907415821" OPTIONS_DIGEST="7212c8c02747b756768ea7473f13cf06">
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Standard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Standard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1_v.178"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Storage_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_R2_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Storage_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_R2_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Essentials_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_ServerStandard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2012_64_bit_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows Server 2016 Essentials"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_Foundation"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Foundation_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Foundation"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Enterprise_Edition"/>
+                                        <OPT VALUE="Windows Server 2016 Datacenter"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2012_Datacenter_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_RTM"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_R2_Enterprise_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R1_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition"/>
+                                        <OPT VALUE="Windows_Server_2012_Standard_RTM"/>
+                                        <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_1"/>
+                                        <OPT VALUE="Windows Server 2016 Standard"/>
+                                        <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_1"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_2"/>
+                                        <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_1"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                            <EXPRESSION EXPR_TYPE="SIMPLE">
+                                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Profile Library" PLUGIN_UNIQUE_NAME="profiles" PLUGIN_VESRION="19.0.9" PLUGIN_VESRION_NUMBER="190090002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                    <FILTER FILTER_ID="1399060921624370646" MATCH_SUBTREE="true">
+                                        <PATH VALUE="Windows/Windows Server 2012"/>
+                                        <PATH VALUE="Windows/Windows Server 2008 R2"/>
+                                        <PATH VALUE="Windows/Windows Server 2012 R2"/>
+                                        <PATH VALUE="Windows/Windows Server 2003/Windows Server 2003 Enterprise"/>
+                                        <PATH VALUE="Windows/Windows Server 2003/Windows Server 2003 Datacenter"/>
+                                        <PATH VALUE="Windows/Windows Server 2008"/>
+                                        <PATH VALUE="Windows/Windows Server 2003/Windows Server 2003 Web"/>
+                                        <PATH VALUE="Windows/Windows Server 2003/Windows Server 2003 Small Business"/>
+                                        <PATH VALUE="Windows/Windows Server 2016"/>
+                                        <PATH VALUE="Windows/Windows Server 2003/Windows Server 2003 Standard"/>
+                                    </FILTER>
+                                </CONDITION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:1728507004054067731;name: Unmanaged &amp; Unauthorized UTS Servers"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8698042958264555865" NAME="Imaging" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                    <!--Rule expression. Rule name is: Imaging-->
+                    <EXPRESSION EXPR_TYPE="OR">
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_class" LABEL="DHCP device class" LEFT_PARENTHESIS="2" LOGIC="AND" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="4563056715129198327" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QNetwork Boot Agents\E" VALUE2="Network Boot Agents"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_os" LABEL="DHCP device OS" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="-3500956999418644266" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QPXE\E" VALUE2="PXE"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_vendor_class" LABEL="DHCP Vendor Class" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="7097788383880312568" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QPXEClient:Arch\E.*" VALUE2="PXEClient:Arch"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="-8529720400546275424" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWORKGROUP\E" VALUE2="WORKGROUP"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_hostname" LABEL="DHCP Hostname" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="830002842894372164" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QMININT\E.*" VALUE2="MININT"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbthost" LABEL="NetBIOS Hostname" LEFT_PARENTHESIS="1" LOGIC="AND" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="7021140097646682920" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\QMININT\E.*" VALUE2="MININT"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="true" FILTER_ID="6920136830622209253" REGEXP="true" TYPE="equals">
+                                            <VALUE VALUE="\QWORKGROUP\E" VALUE2="WORKGROUP"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="OR">
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="1" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="7893507671264413796" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q60\E.*" VALUE2="60"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3978600259425277343" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q66\E.*" VALUE2="66"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="SIMPLE">
+                                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_opt_fingerprint" LABEL="DHCP options fingerprint" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="1">
+                                        <FILTER CASE_SENSITIVE="false" FILTER_ID="9050764519712846557" REGEXP="true" TYPE="contains">
+                                            <VALUE VALUE=".*\Q67\E.*" VALUE2="67"/>
+                                        </FILTER>
+                                    </CONDITION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                        <EXPRESSION EXPR_TYPE="PARENTHESIS">
+                            <EXPRESSION EXPR_TYPE="AND">
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" INNER_NOT="true" LABEL="Member of Group" LEFT_PARENTHESIS="1" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                                            <FILTER FILTER_ID="2987434178165241430">
+                                                <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                                <EXPRESSION EXPR_TYPE="NOT">
+                                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="goodies_label_list" INNER_NOT="true" LABEL="Assigned Label" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Advanced Tools Plugin" PLUGIN_UNIQUE_NAME="goodies" PLUGIN_VESRION="2.2.4" PLUGIN_VESRION_NUMBER="22040028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="2">
+                                            <FILTER FILTER_ID="-6115669304393064713" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="14400"/>
+                                            <FILTER CASE_SENSITIVE="true" FILTER_ID="3238371140349374720" REGEXP="true" TYPE="equals">
+                                                <VALUE VALUE="\QImaging\E" VALUE2="Imaging"/>
+                                            </FILTER>
+                                        </CONDITION>
+                                    </EXPRESSION>
+                                </EXPRESSION>
+                            </EXPRESSION>
+                        </EXPRESSION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="goodies_unlabel_action">
+                    <PARAM NAME="regexp" VALUE="false"/>
+                    <PARAM NAME="ignorecase" VALUE="true"/>
+                    <PARAM NAME="label" VALUE="imaging"/>
+                    <SCHEDULE>
+                        <START Class="Delayed" TIMEPERIOD="4 HOUR"/>
+                        <OCCURENCE onEvery="52 WEEK" onStart="true"/>
+                        <END AFTERN="1" Class="EndAfterN"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="goodies_label_action">
+                    <PARAM NAME="label" VALUE="Imaging"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onEvery="52 WEEK" onStart="true"/>
+                        <END AFTERN="1" Class="EndAfterN"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="false"/>
+                    <PARAM NAME="group-name" VALUE="id:1665759776821674622;name:Previously Imaged"/>
+                    <PARAM NAME="item_key" VALUE="mac"/>
+                    <PARAM NAME="comment" VALUE="Previously Imaged Device"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                </EXCEPTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6256536164624313400" NAME="Whitelisted Windows Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Whitelisted Windows Devices-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="4684940388140728980">
+                            <GROUP ID="9194754469767438723" NAME="Whitelist"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:6694369440890207719;name:Unmanaged and Authorized"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2833824820105294274" NAME="Unknown Windows Servers" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: Unknown Windows Servers-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_cpe" LABEL="OS CPE Format" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="OS X" PLUGIN_UNIQUE_NAME="osx" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-8496613436709474428" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qserver\E.*" VALUE2="server"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="dhcp_os" LABEL="DHCP device OS" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="DHCP Classifier" PLUGIN_UNIQUE_NAME="dhclass" PLUGIN_VESRION="2.1.1" PLUGIN_VESRION_NUMBER="21010003" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-161736579003802719" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qserver\E.*" VALUE2="server"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="10.8.1" PLUGIN_VESRION_NUMBER="108010012" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-6105286352382252716" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qserver\E.*" VALUE2="server"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-5209733526807079481;name:Unmanaged &amp; Unauthorized Servers"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                </EXCEPTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Identifies machines with NetBIOS domain names of &quot;WorkGroup&quot; or MSHome.&#10;&#10;Should be handled per the organizations security policy.&#10;&#10;May include inserting actions to add to blocked or restricted access." ID="-2299844525297392268" NAME="WORKGROUP or MSHome NetBIOS Domain" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="UNAUTH_GUEST"/>
+                <EXPRESSION EXPR_TYPE="OR">
+                    <!--Rule expression. Rule name is: WORKGROUP or MSHome NetBIOS Domain-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-580878649918613081" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qworkgroup\E.*" VALUE2="workgroup"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nbtdomain" LABEL="NetBIOS Domain" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="NBT Scanner" PLUGIN_UNIQUE_NAME="nbtscan_plugin" PLUGIN_VESRION="3.0.6" PLUGIN_VESRION_NUMBER="30060001" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER CASE_SENSITIVE="false" FILTER_ID="-4533718829227871958" REGEXP="true" TYPE="contains">
+                                <VALUE VALUE=".*\Qhome\E.*" VALUE2="home"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:705046372435498829;name:Unmanaged and Unauthorized"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                </EXCEPTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="The remaining Windows devices that have not provided enough properties for host Clarification or events detected on the SPAN interface.&#10;&#10;This is typically the one of the first places to begin enforcement/remediation actions.&#10;" ID="692779169360949465" NAME="Unknown Windows Machines" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="7200" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="UNAUTH_GUEST"/>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:705046372435498829;name: Unmanaged and Unauthorized"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH">
+                    <GROUP ID="1665759776821674622" NAME="Previously Imaged"/>
+                </EXCEPTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
