@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.2.1.1-69" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="3724152770674205232" NAME="Ubuntu Installed Packages" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Ubuntu Installed Packages-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-5973048647720602038">
+                    <GROUP ID="2925457280844972724" NAME="Managed NIX Devices"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="8303570767422344074" NAME="In Scope">
+            <RANGE FROM="10.0.0.0" TO="10.255.255.255"/>
+            <RANGE FROM="172.16.0.0" TO="172.31.255.255"/>
+            <RANGE FROM="192.168.0.0" TO="192.168.0.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.2.1.1-69" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8029487219464107215" NAME="APT Installed Packages Found" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: APT Installed Packages Found-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="linux_script_result.9b18b61bbc8bea3c0eb251421b14996a" LABEL="Linux Expected Script Result Run script as root user on endpoint:1, Command or Script File:linux_installed_packages.sh" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Linux" PLUGIN_UNIQUE_NAME="linux" PLUGIN_VESRION="1.5.1" PLUGIN_VESRION_NUMBER="15010057" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="linux_script_result" NAME="linux_script_result.9b18b61bbc8bea3c0eb251421b14996a">
+                            <PARAM NAME="run_as_root" TYPE="string" VALUE="1"/>
+                            <PARAM NAME="linux_script_howtorun_prop" TYPE="string" VALUE="linux_installed_packages.sh"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="6516973335985354109" TYPE="any">
+                            <VALUE VALUE2="Any"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.2.1.1-69" CACHE_TTL="86400" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5905501882914040908" NAME="APT Installed Unresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
