@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.2.1-311" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1375526371397007523" NAME="YUM Installed Packages -- SC Based" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: YUM Installed Packages - - SC Based-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="linux_manage" LABEL="Linux Manageable (SecureConnector)" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Linux" PLUGIN_UNIQUE_NAME="linux" PLUGIN_VESRION="1.5.1" PLUGIN_VESRION_NUMBER="15010057" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-1348281113580225595" VALUE="true"/>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <SUBNET address="::" prefix="0"/>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.2.1-311" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5949672360902306108" NAME="Yum Installed Packages Found" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Yum Installed Packages Found-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="linux_script_result.32023d9e0a9bbbf29e1a37fe18c6d835" LABEL="Linux Expected Script Result Run script as root user on endpoint:1, Command or Script File:centos_installed_packages.sh" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Linux" PLUGIN_UNIQUE_NAME="linux" PLUGIN_VESRION="1.5.1" PLUGIN_VESRION_NUMBER="15010057" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="linux_script_result" NAME="linux_script_result.32023d9e0a9bbbf29e1a37fe18c6d835">
+                            <PARAM NAME="run_as_root" TYPE="string" VALUE="1"/>
+                            <PARAM NAME="linux_script_howtorun_prop" TYPE="string" VALUE="centos_installed_packages.sh"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="5279946441007866727" TYPE="any">
+                            <VALUE VALUE2="Any"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.2.1-311" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7721045643978368875" NAME="Yum Installed Unresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
