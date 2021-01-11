@@ -32,10 +32,9 @@ Each policy folder will have a README.md file that will describe what the policy
 - SSL Certificate Check Policy
   - This Policy is to locate all the machines listening on Port 443/TCP and then pulls back the certificate information to look for expiration
 
--Template Readme
+- Template Readme
 
 - TPM 
 
-Windows Version 10 
- Windows Version Policy
+- Windows Version 10 
   - Policy to grab the exact Windows 10 version by running a script to grab the full Windows version
