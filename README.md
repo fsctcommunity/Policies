@@ -18,6 +18,9 @@ Each policy folder will have a README.md file that will describe what the policy
 - Cisco SGT Readiness Check
   - Policy set to track readiness of devices to go to SGT
 
+- DSA-2021-088
+  - Polcy to check for Dell firmware update driver vulnerabilities (CVE-2021-21551).
+
 - Hacking Tools
 
 - Hotspot Detection
