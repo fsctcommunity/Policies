@@ -29,6 +29,6 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 | 1909               | 18363   | No               |
 | 1903               | 18362   | No               |
 | 1809 - LTS         | 17763   | No               |
-| 1607               | 15393   | No               |s
+| 1607               | 15393   | No               |
 
 
