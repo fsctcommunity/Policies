@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLICY_FOLDER ID="658157911151127767" NAME="Windows Local Admin
+Audit">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+            CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+            DESCRIPTION="" ENABLED="false" ID="-7537524050124844770"
+            META_TYPE="COMPLY" NAME="Recent Admin Group Additions"
+            NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Recent
+                    Admin Group Additions-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group"
+                    LABEL="Member of Group" LEFT_PARENTHESIS="0"
+                    LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED"
+                    RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-3979541891433185653">
+                            <GROUP ID="1878891773587364831"
+                            NAME="All Managed Windows Devices"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="" ID="1720029952356769633"
+                    NAME="Addition to admin group in last month"
+                    NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            Addition to admin group in last
+                            month-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.ff20e7bce640b5650bbcc3a1901bec71"
+                            LABEL="Windows Expected Script Result
+                            Run Interactive:false, Command or
+                            Script file:RecentSecurityGroupAddition.vbs"
+                            LEFT_PARENTHESIS="0" LOGIC="AND"
+                            PLUGIN_NAME="HPS Inspection Engine"
+                            PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0"
+                            PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.ff20e7bce640b5650bbcc3a1901bec71">
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="RecentSecurityGroupAddition.vbs"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="-540272943188378211"
+                                TYPE="contains">
+                                <VALUE VALUE2="gave admin rights"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="" ID="-831381351720685557"
+                    NAME="No additions detected" NOT_COND_UPDATE="true"
+                    RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            No additions detected-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.ff20e7bce640b5650bbcc3a1901bec71"
+                            LABEL="Windows Expected Script Result
+                            Run Interactive:false, Command or
+                            Script file:RecentSecurityGroupAddition.vbs"
+                            LEFT_PARENTHESIS="0" LOGIC="AND"
+                            PLUGIN_NAME="HPS Inspection Engine"
+                            PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.1.0"
+                            PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.ff20e7bce640b5650bbcc3a1901bec71">
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="RecentSecurityGroupAddition.vbs"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="7319906892597715305"
+                                TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="" ID="3933214746099657984"
+                    NAME="Irresolvable" NOT_COND_UPDATE="true"
+                    RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/> 
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+            CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+            DESCRIPTION="This policy will enumerate the local
+            administrator group on the workstation and identify
+            accounts or groups which are not in the provided
+            approved admin list. Usage: in the Non-Compliant
+            and Compliant subrules, be sure to upload the vb
+            script file and specify the compliant accounts after
+            the script name using &quot;#&quot; if spaces exist.
+            For Example: ApprovedLocalAdmins.vbs domain#admins,administrator,enterprise#admins"
+            ENABLED="false" ID="-3991820502083025178" META_TYPE="COMPLY"
+            NAME="Local Admin Permission Audit" NOT_COND_UPDATE="true"
+            UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Local
+                    Admin Permission Audit-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group"
+                    LABEL="Member of Group" LEFT_PARENTHESIS="0"
+                    LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED"
+                    RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-6495597157623146420">
+                            <GROUP ID="1878891773587364831"
+                            NAME="All Managed Windows Devices"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="This sub-rule will identify
+                    a script result containing a non-compliant
+                    account. Run script condition with arguments
+                    containing names of approved local admin
+                    accounts. Account names should be comma
+                    seperated and hash signs '#' used instead
+                    of spaces. Example ApprovedLocalAdmins.vbs
+                    domain#admins,administrator,pctechs " ID="-4811603783131465849"
+                    NAME="Non-Compliant Local Admins" NOT_COND_UPDATE="true"
+                    RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            Non-Compliant Local Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.8ab4d3cc4d87bbed2edc86e150365575"
+                            LABEL="Windows Expected Script Result
+                            Command or Script file:ApprovedLocalAdmins.vbs
+                            domain#admins,administrator,enterprise#admins,
+                            Run Interactive:false" LEFT_PARENTHESIS="0"
+                            LOGIC="AND" PLUGIN_NAME="HPS Inspection
+                            Engine" PLUGIN_UNIQUE_NAME="va"
+                            PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.8ab4d3cc4d87bbed2edc86e150365575">
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="ApprovedLocalAdmins.vbs
+                                domain#admins,administrator,enterprise#admins"/>
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="8555218384417485277"
+                                TYPE="contains">
+                                <VALUE VALUE2="NonCompliant"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="This sub-rule will identify
+                    a script result only, without a Non-Compliant
+                    Account Run script condition with arguments
+                    containing names of approved local admin
+                    accounts. Account names should be comma
+                    seperated and hash signs '#' used instead
+                    of spaces. Example ApprovedLocalAdmins.vbs
+                    domain#admins,administrator,pctechs " ID="-8900861402640138606"
+                    NAME="Compliant Local Admins" NOT_COND_UPDATE="true"
+                    RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            Compliant Local Admins-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.8ab4d3cc4d87bbed2edc86e150365575"
+                            LABEL="Windows Expected Script Result
+                            Command or Script file:ApprovedLocalAdmins.vbs
+                            domain#admins,administrator,enterprise#admins,
+                            Run Interactive:false" LEFT_PARENTHESIS="0"
+                            LOGIC="AND" PLUGIN_NAME="HPS Inspection
+                            Engine" PLUGIN_UNIQUE_NAME="va"
+                            PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.8ab4d3cc4d87bbed2edc86e150365575">
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="ApprovedLocalAdmins.vbs
+                                domain#admins,administrator,enterprise#admins"/>
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="6079311071469771368"
+                                TYPE="any">
+                                <VALUE VALUE2="Any"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="Catch-all for failed script
+                    results." ID="5732115229257594340" NAME="Irresolvable"
+                    NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/> 
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+            CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+            DESCRIPTION="Policy to detect users who are logged
+            on locally or via RDP using an account that has
+            local administrative rights. Upload LocalAdminLoggedOn.vbs
+            sript before using." ENABLED="false" ID="7896018545635975897"
+            META_TYPE="COMPLY" NAME="Logged on User Admin Check"
+            NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Logged
+                    on User Admin Check-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group"
+                    LABEL="Member of Group" LEFT_PARENTHESIS="0"
+                    LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED"
+                    RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="-1658780369553446629">
+                            <GROUP ID="1878891773587364831"
+                            NAME="All Managed Windows Devices"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="The currently logged on user
+                    of the machine is part of the local admin
+                    group." ID="2510869444630344773" NAME="Logged
+                    on Local Admin" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NOT_COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            Logged on Local Admin-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.f187b80fa8426765b14b450bedf1067b"
+                            LABEL="Windows Expected Script Result
+                            Command or Script file:LocalAdminLoggedOn.vbs,
+                            Run Interactive:false" LEFT_PARENTHESIS="0"
+                            LOGIC="AND" PLUGIN_NAME="HPS Inspection
+                            Engine" PLUGIN_UNIQUE_NAME="va"
+                            PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.f187b80fa8426765b14b450bedf1067b">
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="LocalAdminLoggedOn.vbs"/>
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="5743298304287408354"
+                                TYPE="contains">
+                                <VALUE VALUE2="is a local admin"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="The currently logged on user
+                    of the machine is not part of the local
+                    admin group." ID="-6984473344160378004"
+                    NAME="NOT Logged on as Local Admin" NOT_COND_UPDATE="true"
+                    RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="COMPLY"/>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is:
+                            NOT Logged on as Local Admin-->
+                            <CONDITION EMPTY_LIST_VALUE="false"
+                            FIELD_NAME="script_result.f187b80fa8426765b14b450bedf1067b"
+                            LABEL="Windows Expected Script Result
+                            Command or Script file:LocalAdminLoggedOn.vbs,
+                            Run Interactive:false" LEFT_PARENTHESIS="0"
+                            LOGIC="AND" PLUGIN_NAME="HPS Inspection
+                            Engine" PLUGIN_UNIQUE_NAME="va"
+                            PLUGIN_VESRION="11.1.0" PLUGIN_VESRION_NUMBER="111000086"
+                            RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result"
+                                NAME="script_result.f187b80fa8426765b14b450bedf1067b">
+                                <PARAM NAME="script_howtorun_prop"
+                                TYPE="string" VALUE="LocalAdminLoggedOn.vbs"/>
+                                <PARAM NAME="script_interactive"
+                                TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false"
+                                FILTER_ID="-6589986216804914014"
+                                TYPE="contains">
+                                <VALUE VALUE2="Sessions"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.2.0-1565" CACHE_TTL="604800"
+                    CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS"
+                    DESCRIPTION="Catch-all for failed script
+                    results." ID="-3577509161379368516" NAME="Irresolvable"
+                    NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <META_TYPE STATE="NA"/>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/> 
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>
