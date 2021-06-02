@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This will detect possible home routers that are sitting on your corporate network." ENABLED="true" ID="-7951989676993939995" NAME="1.3.3.6 Consumer Router Detection Policy" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6962650912435598499" NAME="NAT Device" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: NAT Device-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="nat" LABEL="Device is NAT" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="327533954793835380" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400"/>
+                        <FILTER FILTER_ID="-2119423273611863879" VALUE="true"/>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4756600209208333165" NAME="DHCP Relay" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: DHCP Relay-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="is_dhcp_relay" LABEL="Device is DHCP Relay" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="5045721532110575434" NEWER="true" OCCURRED="false" RELATIVE="true" VALUE="86400"/>
+                        <FILTER FILTER_ID="3077452891190392552" VALUE="true"/>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8848190004752476281" NAME="Multiple Devices Behind Port" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Multiple Devices Behind Port-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="sw_port_multi" LABEL="Number of Hosts on Port" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Switch" PLUGIN_UNIQUE_NAME="sw" PLUGIN_VESRION="8.12.2" PLUGIN_VESRION_NUMBER="81202005" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER FILTER_ID="826668972523948991">
+                            <RANGE FROM="3" TO="100"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="105678564973427389" NAME="Consumer NIC Vendor" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Consumer NIC Vendor-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="vendor" LABEL="NIC Vendor" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="NIC Vendor DB" PLUGIN_UNIQUE_NAME="nic" PLUGIN_VESRION="18.0.10" PLUGIN_VESRION_NUMBER="180100002" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="-2007334890592305218" OPTIONS_DIGEST="2470ab3f8b208c872f6c1c3531ad81d6">
+                            <OPT VALUE="belkin corporation"/>
+                            <OPT VALUE="d-link systems, inc."/>
+                            <OPT VALUE="cisco-linksys, llc"/>
+                            <OPT VALUE="the linksys group, inc."/>
+                            <OPT VALUE="trendnet, inc."/>
+                            <OPT VALUE="belkin components"/>
+                            <OPT VALUE="d-link corporation"/>
+                            <OPT VALUE="tp-link technologies co.,ltd."/>
+                            <OPT VALUE="asus network technologies, inc."/>
+                            <OPT VALUE="d-link international"/>
+                            <OPT VALUE="buffalo.inc"/>
+                            <OPT VALUE="belkin international inc."/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.0.1-99" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4323200327271024018" NAME="Non Consumer Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>

@@ -1,20 +1,28 @@
-# Network Policies
-## DHCP Servers and Relays Policy
+# Track Network Items
 
-## Facility Device Classification Policy
+## Use Case
+This folder is made up of multiple policies to track what is happening at the network layer. Each XML file can be downloaded and used to track specific items around the network.
+The following policies exist within this setup:
 
-## Interesting Processes Policy
+### DHCP Servers and Relays Policy
 
-## New Device Detected Policy
+### Facility Device Classification
 
-## Consumer Router Detection Policy
+### Interesting Processes Policy
 
-## IP Port Change-State Policy
+### New Device Detected Policy
 
-## IT Flows On Network Policy
+### Consumer Router Detection Policy
 
-## Operating System Changes Network Function Policy
+### IP Port Change-State Policy
 
-## Track Device Move Policy
+### IT Flows on Network Policy
 
-## Track Switch Change-State Policy
+### Operating System Changes Network Function Policy
+
+### Track Device Move Policy
+
+### Track Switch Change-State Policy
+
+
+## Needed for the policy
