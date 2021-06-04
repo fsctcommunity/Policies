@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="1110838002499269322" NAME="-- DHCP Servers and Relays" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="259200000" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="30000" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="OR">
+            <!--Rule expression. Rule name is: - - DHCP Servers and Relays-->
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="is_dhcp_relay" LABEL="Device is DHCP Relay" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="7324096473570791771" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1321922022"/>
+                    <FILTER FILTER_ID="-2355133868324598222" VALUE="true"/>
+                </CONDITION>
+            </EXPRESSION>
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="is_dhcp_server" LABEL="Device is DHCP Server" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER FILTER_ID="7559966464106449929" NEWER="true" OCCURRED="true" RELATIVE="false" VALUE="1321922011"/>
+                    <FILTER FILTER_ID="1913254380115597957" VALUE="true"/>
+                </CONDITION>
+            </EXPRESSION>
+        </EXPRESSION>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-3109178619152565739" NAME="Nakatomi - In Scope">
+            <RANGE FROM="10.0.0.1" TO="10.1.2.255"/>
+            <RANGE FROM="10.2.0.0" TO="10.2.0.255"/>
+            <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+            <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+            <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+            <RANGE FROM="172.27.12.0" TO="172.27.15.255"/>
+            <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+            <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7513909260247791352" NAME="Cisco Devices" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Cisco Devices-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="user_def_fp" LABEL="OS Fingerprint" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="2.7.0" PLUGIN_VESRION_NUMBER="423" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="3884741179505971513" TYPE="contains">
+                            <VALUE VALUE2="cisco switch"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.1.0-1299" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3935785617300033937" NAME="Non-Cisco DHCP Services" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="false">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
