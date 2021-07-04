@@ -3,3 +3,12 @@ There was some discussion on the Slack Channel in regards to whether or not the 
 
 Thanks to the following page (though others may do this better) for providing the scripts: http://www.cistel.com/blog/identify-the-version-of-your-tpm-chip-using-powershell-or-wmicim-in-system-center-configuration-manager/
 
+# Template Read Me
+
+This is a template that can be used for every README.MD in this folder.
+
+# NAME OF POLICY
+
+## Use Case
+
+## Needed for the policy
