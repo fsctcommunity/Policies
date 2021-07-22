@@ -18,7 +18,8 @@ This poliy is built around three different sub-rules:
   - Stops the Print Spooler Service and changes startup to Disabled via a script (spooler.vbs)
   - An immediate recheck could be added as an action to clear this error message
 
-  #### Change Rule for Detection of Domain Controllers
+#### Change Rule for Detection of Domain Controllers
+
   The was an additional policy created called "Domain Controllers" tha queries for the Active Directory Server via WMI and adds a device to the Group Domain Controllers. This avoids running a script on the domain controllers
 
 - Check for Servers
