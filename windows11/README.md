@@ -1,4 +1,4 @@
-# NAME OF POLICY
+# Windows 11 Compliance Check
 
 ## Use Case
 
@@ -21,4 +21,3 @@ This policy will check for the requirements and mark the machine compliant or no
 
 ## Needed for the policy
 
-4
