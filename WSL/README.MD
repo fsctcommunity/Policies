@@ -1,6 +1,5 @@
 # WSL Policy
 
-
 ## Use Case
 
 Windows 10 introduced the Windows Subsystem for Linux (WSL) which allows a full Linux system to run within a Windows 10 or higher installation.
