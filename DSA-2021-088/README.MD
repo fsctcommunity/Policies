@@ -11,3 +11,7 @@ Five high-severity bugs were found in Dell's firmware update driver, which date 
 ## Use Case
 
 Determine what machines on the network are vulnerable to the Dell firmware update driver, using Forescout and the Dell advisory about the vulnerability. https://www.dell.com/support/kbdoc/en-us/000186019/dsa-2021-088-dell-client-platform-security-update-for-dell-driver-insufficient-access-control-vulnerability 
+
+## Needed for Policy
+
+- VR DSA-2021-088.xml is the only thing needed for this policy
