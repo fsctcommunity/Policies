@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="4931038296326781364" NAME="Apt Installed Packages - Remote Inspection" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Apt Installed Packages - Remote Inspection-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="ssh_linux_manage" LABEL="Linux Manageable (SSH Direct Access)" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Linux" PLUGIN_UNIQUE_NAME="linux" PLUGIN_VESRION="1.6.0" PLUGIN_VESRION_NUMBER="16000033" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-4977848896895528073" VALUE="true"/>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-6375877852431677997" NAME="Forescout Lab">
+            <RANGE FROM="192.168.1.0" TO="192.168.7.255"/>
+            <RANGE FROM="192.168.20.0" TO="192.168.21.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2446363552323358997" NAME="APT Installed Packages Found" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: APT Installed Packages Found-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="linux_script_result.c4bea9e8e2f2c01bc1b4c9f2100024a0" LABEL="Linux Expected Script Result Run script as root user on endpoint:0, Command or Script File:apt_installed_packages.sh" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Linux" PLUGIN_UNIQUE_NAME="linux" PLUGIN_VESRION="1.6.0" PLUGIN_VESRION_NUMBER="16000033" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="linux_script_result" NAME="linux_script_result.c4bea9e8e2f2c01bc1b4c9f2100024a0">
+                            <PARAM NAME="run_as_root" TYPE="string" VALUE="0"/>
+                            <PARAM NAME="linux_script_howtorun_prop" TYPE="string" VALUE="apt_installed_packages.sh"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1888652947714466601" TYPE="any">
+                            <VALUE VALUE2="Any"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="9141072329816167049" NAME="APT Installed Unresolvable" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>

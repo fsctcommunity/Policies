@@ -6,7 +6,7 @@ CVE-2021-1675 is a vulnerability that allows for elevation of privilege through 
 
 The recommend solution is to stop the Print Spooler Service.
 
-### The Policy
+## The Policy
 
 This poliy is built around three different sub-rules:
 
@@ -18,7 +18,8 @@ This poliy is built around three different sub-rules:
   - Stops the Print Spooler Service and changes startup to Disabled via a script (spooler.vbs)
   - An immediate recheck could be added as an action to clear this error message
 
-  #### Change Rule for Detection of Domain Controllers
+## Change Rule for Detection of Domain Controllers
+  
   The was an additional policy created called "Domain Controllers" tha queries for the Active Directory Server via WMI and adds a device to the Group Domain Controllers. This avoids running a script on the domain controllers
 
 - Check for Servers
@@ -52,4 +53,3 @@ There is a heavy reliance on scripts as a part of this policy set
 -spooler.vbs
 
 - Stops the Print Spooler Service and changes startup to disabled
- 

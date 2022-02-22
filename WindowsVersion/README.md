@@ -1,4 +1,3 @@
-
 # Exact Windows Version
 
 There are two policies attached in XML format for this policy: Exact Windows 10 Version and Exact Windows Server Verion.
@@ -15,4 +14,5 @@ As Microsoft releases additional versions, this policy will need to be modified.
 An additional thought is we could create a group of "Unsupported Windows Versions" as versions come in and out of support.
 
 ## Needed for the policy
+
 There are two XML files based on the version (Client vs. Server) that is being tracked, also there is a winver.bat file that is needed to run as a script.
