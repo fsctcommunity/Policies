@@ -1,4 +1,4 @@
-#CounterACT Forescout Device SSL Certificate expiration policies
+# CounterACT Forescout Device SSL Certificate expiration policies
 
 These policies help to locate all machines listening on Port 443/TCP and then using openSSL on the managaging CounterACT
 appliance to pull back the certificate information. The policy then looks for text on the expiration. These policies can be altered

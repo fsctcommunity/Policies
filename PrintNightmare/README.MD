@@ -53,4 +53,3 @@ There is a heavy reliance on scripts as a part of this policy set
 -spooler.vbs
 
 - Stops the Print Spooler Service and changes startup to disabled
- 
