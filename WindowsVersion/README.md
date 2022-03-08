@@ -1,6 +1,6 @@
 # Exact Windows Version
 
-There are two policies attached in XML format for this policy: Exact Windows 10 Version and Exact Windows Server Verion.
+There are two policies attached in XML format for this policy: Windows 10 Versions and Windows Server Versions
 
 ## Use Case
 
@@ -11,7 +11,7 @@ The policy runs a script to grab the Windows Version and then based on the outpu
 
 As Microsoft releases additional versions, this policy will need to be modified.
 
-An additional thought is we could create a group of "Unsupported Windows Versions" as versions come in and out of support.
+Unsupported versions of Windows are added to the "unsupported windows" group and supported versions are added to the "supported windows" group.
 
 ## Needed for the policy
 

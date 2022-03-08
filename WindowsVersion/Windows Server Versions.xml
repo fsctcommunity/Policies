@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-2142395905435175669" NAME="Windows Server Versions" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Windows Server Versions-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="os_classification" LABEL="Operating System" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.6.1" PLUGIN_VESRION_NUMBER="16010047" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER CASE_SENSITIVE="false" FILTER_ID="-7845269782933148326" TYPE="contains">
+                    <VALUE VALUE2="Windows Server"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-6375877852431677997" NAME="Forescout Lab">
+            <RANGE FROM="192.168.1.0" TO="192.168.7.255"/>
+            <RANGE FROM="192.168.20.0" TO="192.168.21.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="226782488406505533" NAME="Windows Server 2016" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2016-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.2.0" PLUGIN_VESRION_NUMBER="112000028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-6254287349743475205">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="os_build_number" TYPE="contains">
+                                <VALUE VALUE2="14393"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-3832649348786661609;name:Unsupported Windows Versions"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5750096574966524623" NAME="Windows Server 1809" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 1809-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.2.0" PLUGIN_VESRION_NUMBER="112000028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-7404404439834116696">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="os_build_number" TYPE="contains">
+                                <VALUE VALUE2="17763"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:774220364989581876;name:Supported Windows Versions"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4284653210175561399" NAME="Windows Server 1909" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 1909-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.2.0" PLUGIN_VESRION_NUMBER="112000028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="2332501109355364930">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="os_build_number" TYPE="contains">
+                                <VALUE VALUE2="18363"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-3832649348786661609;name:Unsupported Windows Versions"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="444371680487620574" NAME="Windows Server 20H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 20H2-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.2.0" PLUGIN_VESRION_NUMBER="112000028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-6425733210685169192">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="os_build_number" TYPE="contains">
+                                <VALUE VALUE2="19042"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:774220364989581876;name:Supported Windows Versions"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.3.0-233" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7645342142179977909" NAME="Windows Server 2022" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2022-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.2.0" PLUGIN_VESRION_NUMBER="112000028" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="7223136543621091088">
+                            <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="os_build_number" TYPE="contains">
+                                <VALUE VALUE2="20348"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:774220364989581876;name:Supported Windows Versions"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
