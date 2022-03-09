@@ -9,7 +9,8 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 
 | Windows 10 Version | Build # | Supported or Not |
 | :----------------- | :------ | :--------------- |
-| 21 H1              | 19043   | Yes - current    |
+| 21 H2              | 19044   | Yes              |
+| 21 H1              | 19043   | Yes              |
 | 20 H2              | 19042   | Yes              |
 | 2004               | 19041   | Yes              |
 | 1909               | 18363   | No               |
@@ -24,6 +25,7 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 
 | Windows Server Version | Build # | Supported or Not |
 | :----------------- | :------ | :--------------- |
+| 2022               | 20348   | Yes              |
 | 20 H2              | 19042   | Yes              |
 | 2004               | 19041   | Yes              |
 | 1909               | 18363   | No               |
