@@ -17,3 +17,5 @@ This policy checks several options around Cisco Security Group Tags
 - SGT Compatibility Undefined
 
 ## Needed for the policy
+
+The policy "Cico SGT Readiness.xml" contains all the information needed for this.
