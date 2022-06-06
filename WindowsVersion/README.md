@@ -1,18 +1,19 @@
 # Exact Windows Version
 
-There are two policies attached in XML format for this policy: Windows 10 Versions and Windows Server Versions
+There are two policies attached in XML format for this policy: Supported Windows Desktop Versions and Supported Windows Server Versions
 
 ## Use Case
 
-This policy focus on detecting the exact version of Windows 10 and marking whether a device is compliant based supported Windows versions. THis policy was published 1st on the Forescout Community Slack and then merged with a policy from Forescout as well.
-
-
-The policy runs a script to grab the Windows Version and then based on the output will put it into various Groups to allow for better reporting and gathering. 
+This policy focus on detecting the exact version of Windows 10 and marking whether a device is compliant based supported Windows versions. This policy was published in the Forescout Community Slack (https://www.forescoutcommunity.com/) and then published on the Github
 
 As Microsoft releases additional versions, this policy will need to be modified.
 
-Unsupported versions of Windows are added to the "unsupported windows" group and supported versions are added to the "supported windows" group.
+The policy is using the "Windows Version Fine-tuned" attribute to look at specific versions of Windows 10 and Windows 11 (as more vesions of Windows 11 are released).
+
+NOTE: There are currently two Long Term Servicing Channels that are supported by Microsoft for Windows 10.
+
+Unsupported versions of Windows are added to the "Windows Version Not Compliant" group and flagged as "Non Compliant" while supported versions are added to the "supported windows" group and flagged as compliant.
 
 ## Needed for the policy
 
-There are two XML files based on the version (Client vs. Server) that is being tracked, also there is a winver.bat file that is needed to run as a script.
+There are two XML files based on the version (Client vs. Server) that is being tracked.
