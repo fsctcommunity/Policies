@@ -4,6 +4,12 @@ This list is taken from Microsofts Site (<https://docs.microsoft.com/en-us/windo
 
 The Policy requires the specific build numbers to distinguish beteween the various builds.
 
+## Build Numbers of Windows 11
+
+| Windows 11 Version | Build # | Supported or Not |
+| :----------------- | :------ | :--------------- |
+| 21H2               | 22000   | Yes              |
+
 ## Build Numbers of Windows 10
 
 NOTE: All Windows 10 builds start 10. and then contain the build number listed below.
