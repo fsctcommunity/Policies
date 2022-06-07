@@ -1,7 +1,14 @@
 # List of Windows 10 Release Numbers
-This list is taken from Microsofts Site (https://docs.microsoft.com/en-us/windows/release-health/release-information) and contains all version numbers of Windows 10 and Windwows Server It will be updated and maintained to drive the Forescout Policy included in this folder.
+
+This list is taken from Microsofts Site (<https://docs.microsoft.com/en-us/windows/release-health/release-information>) and contains all version numbers of Windows 10 and Windwows Server It will be updated and maintained to drive the Forescout Policy included in this folder.
 
 The Policy requires the specific build numbers to distinguish beteween the various builds.
+
+## Build Numbers of Windows 11
+
+| Windows 11 Version | Build # | Supported or Not |
+| :----------------- | :------ | :--------------- |
+| 21H2               | 22000   | Yes              |
 
 ## Build Numbers of Windows 10
 
@@ -18,9 +25,6 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 | 1607               | 14393   | Yes              |
 | 1507               | 10240   | No               |
 
-
-
-
 ## Build Numbers of Windows Server
 
 | Windows Server Version | Build # | Supported or Not |
@@ -32,5 +36,3 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 | 1903               | 18362   | No               |
 | 1809 - LTS         | 17763   | No               |
 | 1607               | 15393   | No               |
-
-
