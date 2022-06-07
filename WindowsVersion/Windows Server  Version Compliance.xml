@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="6487692910028705423" META_TYPE="COMPLY" NAME="Windows Server  Version Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Windows Server  Version Compliance-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-7447871768733999775">
+                    <GROUP ID="7650555432006681525" NAME="All Managed Windows Devices"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-8087060916317949182" NAME="Nakatomi Trading Corp.">
+            <RANGE FROM="10.0.1.1" TO="10.0.1.214"/>
+            <RANGE FROM="10.0.2.2" TO="10.0.2.253"/>
+            <RANGE FROM="10.0.3.2" TO="10.0.3.253"/>
+            <RANGE FROM="10.0.4.2" TO="10.0.4.253"/>
+            <RANGE FROM="10.0.5.2" TO="10.0.5.253"/>
+            <RANGE FROM="10.0.11.0" TO="10.0.16.255"/>
+            <RANGE FROM="10.0.31.0" TO="10.0.36.255"/>
+            <RANGE FROM="10.0.61.0" TO="10.0.66.255"/>
+            <RANGE FROM="10.0.91.0" TO="10.0.91.255"/>
+            <RANGE FROM="10.0.95.0" TO="10.0.95.255"/>
+            <RANGE FROM="10.0.100.1" TO="10.0.100.255"/>
+            <RANGE FROM="10.0.101.1" TO="10.255.255.255"/>
+            <RANGE FROM="74.209.0.0" TO="74.209.255.255"/>
+            <RANGE FROM="137.48.0.0" TO="137.48.255.255"/>
+            <RANGE FROM="172.16.0.0" TO="172.16.99.255"/>
+            <RANGE FROM="172.16.100.1" TO="172.16.100.254"/>
+            <RANGE FROM="172.16.101.1" TO="172.16.101.254"/>
+            <RANGE FROM="172.16.102.0" TO="172.17.255.255"/>
+            <RANGE FROM="172.19.1.1" TO="172.26.11.255"/>
+            <RANGE FROM="172.27.12.0" TO="172.27.17.255"/>
+            <RANGE FROM="172.27.20.0" TO="172.27.23.255"/>
+            <RANGE FROM="172.30.0.0" TO="172.31.255.255"/>
+            <RANGE FROM="192.168.0.0" TO="192.168.255.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8382579759004210509" NAME="Windows Server 2003" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2003-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="-7931685340265478413" OPTIONS_DIGEST="f468635083eeb7888e86583d61435a0c">
+                            <OPT VALUE="Windows_Server_2003_Small_Business_Server"/>
+                            <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_Small_Business_Server_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_Datacenter_Edition"/>
+                            <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_Datacenter_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_Enterprise_Edition"/>
+                            <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_Standard_Edition"/>
+                            <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_Web_Edition"/>
+                            <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_Web_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_R2_Enterprise_Edition"/>
+                            <OPT VALUE="Windows_Server_2003_R2"/>
+                            <OPT VALUE="Windows_Server_2003"/>
+                            <OPT VALUE="Windows_2003_R2"/>
+                            <OPT VALUE="Windows_2003_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_64-bit_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2003_64-bit_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_R2_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2003_R2_Service_Pack_2"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:8087968647297940124;name:Windows Version Not Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2088684733361194285" NAME="Windows Server 2008" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2008-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="1764404982589875207" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
+                            <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Web_Server_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Datacenter_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_ServerStandard_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Enterprise_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_Foundation"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Foundation"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Enterprise_Edition"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Standard_Edition"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_1_v.178"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_Hyper-V_System_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Datacenter_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_HPC_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Enterprise_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Enterprise_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Datacenter_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Server_Core_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Web_Server_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Standard_Edition_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Web_Server_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Hyper-V_RTM"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Datacenter_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Datacenter_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Standard_Edition"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Web_Server_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_HPC_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Hyper-V_System_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Web_Server_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_R1_Standard_Edition_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R1_Web_Server_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_R2_Standard_Edition_Service_Pack_1"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Datacenter_Service_Pack_2"/>
+                            <OPT VALUE="Windows_Server_2008_64-bit_R2_Enterprise_Edition_Service_Pack_1"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:8087968647297940124;name:Windows Version Not Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5500028248351813318" NAME="Windows Server 2012" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NOT_COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2012-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="1556259408380356201">
+                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="388f122403660faa1955d0ffabdf08b7" SUB_FIELD_NAME="parent">
+                                <OPT VALUE="windows_2012"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:8087968647297940124;name:Windows Version Not Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1471142849472465779" NAME="Windows Server 2016" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2016-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="5699287216020955025" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
+                            <OPT VALUE="Windows_2016_Datacenter"/>
+                            <OPT VALUE="Windows_Server_2016_Essentials"/>
+                            <OPT VALUE="Windows_Server_2016_Datacenter"/>
+                            <OPT VALUE="Windows_Server_2016_Standard"/>
+                            <OPT VALUE="Windows_Server_2016_64-bit_Datacenter"/>
+                            <OPT VALUE="Windows_Server_2016_64-bit_Standard"/>
+                            <OPT VALUE="Windows_2016_Standard"/>
+                            <OPT VALUE="Windows_Server_2016_64-bit_Essentials"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-3690364449314914477;name:Windows Version Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6115670114054288799" NAME="Windows Server 2019" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="COMPLY"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 2019-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <FILTER AUTO_UPDATE="false" FILTER_ID="9023907510046881571" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
+                            <OPT VALUE="Windows_Server_2019_Essentials"/>
+                            <OPT VALUE="Windows_Server_2019_64-bit_Essentials"/>
+                            <OPT VALUE="Windows_Server_2019_Datacenter"/>
+                            <OPT VALUE="Windows_Server_2019_64-bit_Standard"/>
+                            <OPT VALUE="Windows_Server_2019_64-bit_Datacenter"/>
+                            <OPT VALUE="Windows_Server_2019_Standard"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-3690364449314914477;name:Windows Version Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1206031900353890975" NAME="Other or No Version Available" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.0-52" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2487278215994769727" NAME="Windows Server 20H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <META_TYPE STATE="NA"/>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows Server 20H2-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Data Simulator" PLUGIN_UNIQUE_NAME="random_data" PLUGIN_VESRION="3.0.1" PLUGIN_VESRION_NUMBER="300000058" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="1544402942600607733">
+                            <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="3a4cec1712dc8b13e4baf60aaa709ffc" SUB_FIELD_NAME="parent">
+                                <OPT VALUE="windows_2022"/>
+                            </SUB_FILTER>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="add-to-group">
+                    <PARAM NAME="temporary" VALUE="true"/>
+                    <PARAM NAME="group-name" VALUE="id:-3690364449314914477;name:Windows Version Compliant"/>
+                    <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                    <PARAM NAME="comment" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
