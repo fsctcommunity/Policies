@@ -8,6 +8,9 @@ Each policy folder will have a README.md file that will describe what the policy
 
 ## Listing of Policies
 
+- Active Probing
+   - Policy set to leverage the new Active Probing Module within Forescout.
+
 - Altiris
   - Policy to check status of the Altiris Services and whether or not they are working. Checks for the AEXNSAgent service running or not
 
@@ -18,6 +21,9 @@ Each policy folder will have a README.md file that will describe what the policy
 - Cisco SGT Readiness Check
   - Policy set to track readiness of devices to go to SGT
 
+- Domain Controller
+  - Policy to determine if a device is a domain controller
+
 - DSA-2021-088
   - Polcy to check for Dell firmware update driver vulnerabilities (CVE-2021-21551).
 
@@ -26,8 +32,20 @@ Each policy folder will have a README.md file that will describe what the policy
 - Hotspot Detection
   - Policy to check Windows Machines to see if a Hotspot is plugged in via USB
 
+- Linux installed
+  - Policies to track applications installed on Linux based machines using both Agent based and Remote Inspection
+
+- Mac Assessment
+  - Policies to help with assessing Mac OS devices
+
+- NDAA Devices
+  - Policy to track devices banned by the National Defense Administration Act
+
 - Network Change Policies
   - Group of policies to track changes on the network
+
+- Print Nightmare
+  - Two policies set to track the PrintNightmare vulnerabilities
 
 - Remote Desktop NLA Detection Policy
   - Policy for detecting Managed Windows devices that that are listening on TCP/3389 (RDP) that have NLA enabled.
@@ -39,5 +57,11 @@ Each policy folder will have a README.md file that will describe what the policy
 
 - TPM 
 
-- Windows Version 10 
-  - Policy to grab the exact Windows 10 version by running a script to grab the full Windows version
+- WSL Policy
+  - Policy to track down Windows Subsystem for Linux being installed
+
+- Windows Local Admin
+  - Policies around the Windows Local Admin
+
+- Windows Version
+  - Policy to tack currently suppored versions of Windows
