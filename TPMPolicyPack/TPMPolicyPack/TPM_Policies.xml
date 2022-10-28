@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POLICY_FOLDER ID="5805942220727722976" NAME="TPM">
+    <POLICIES>
+        <POLICY>
+            <RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-6671764082536934959" NAME="C. Verify: TPM - Version" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="5773334475845689253" NAME="WinManaged_TPMFoundDM"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7583067632430789372" NAME="Check: TPM Version 2.0" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Check: TPM Version 2.0-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.171d1050517ac71b424f410f1e58f24b" LABEL="Windows Expected Script Result Command or Script file:CheckDMforTPM2.vbs, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.0" PLUGIN_VESRION_NUMBER="113000006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result" NAME="script_result.171d1050517ac71b424f410f1e58f24b">
+                                    <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="CheckDMforTPM2.vbs"/>
+                                    <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1747680794875275110" TYPE="contains">
+                                    <VALUE VALUE2="2"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:1417672198340311127;name:WinManaged_TPMver2.0"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7206585094275139832" NAME="Check: TPM Version 1.0" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Check: TPM Version 1.0-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.171d1050517ac71b424f410f1e58f24b" LABEL="Windows Expected Script Result Command or Script file:CheckDMforTPM2.vbs, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.0" PLUGIN_VESRION_NUMBER="113000006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result" NAME="script_result.171d1050517ac71b424f410f1e58f24b">
+                                    <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="CheckDMforTPM2.vbs"/>
+                                    <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-1277234225101860125" TYPE="contains">
+                                    <VALUE VALUE2="1.0"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:8844388069108611206;name:WinManaged_TPMver1.0"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="400472866862661933" NAME="Unhandled or Out of Range" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="-4047960414328897557" NAME="B. Verify: TPM - Enable State" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER>
+                    <GROUP ID="5773334475845689253" NAME="WinManaged_TPMFoundDM"/>
+                </GROUP_IN_FILTER>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2555908543023055128" NAME="Check: TPM Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Check: TPM Enabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.f51099825de8421851131a06790cecf0" LABEL="Windows Expected Script Result Command or Script file:CheckTPMEnabled.vbs, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.0" PLUGIN_VESRION_NUMBER="113000006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result" NAME="script_result.f51099825de8421851131a06790cecf0">
+                                    <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="CheckTPMEnabled.vbs"/>
+                                    <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="-2926120930480842315" TYPE="contains">
+                                    <VALUE VALUE2="true"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:1164675351072199589;name:WinManaged_TPMEnabled"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3779319898194522683" NAME="Check TPM Not Enabled" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: Check TPM Not Enabled-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.f51099825de8421851131a06790cecf0" LABEL="Windows Expected Script Result Command or Script file:CheckTPMEnabled.vbs, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.0" PLUGIN_VESRION_NUMBER="113000006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result" NAME="script_result.f51099825de8421851131a06790cecf0">
+                                    <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="CheckTPMEnabled.vbs"/>
+                                    <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="3977547373271509070" TYPE="contains">
+                                    <VALUE VALUE2="false"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5453819318851940743;name:WinManaged_TPMNotEnabled"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6122904081778457852" NAME="Unhandled or Out of Range" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+        <POLICY>
+            <RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="false" ID="635015556288503682" NAME="A. Verify: TPM - Capable" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+                <GROUP_IN_FILTER/>
+                <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+                <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+                <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+                <ORIGIN NAME="CUSTOM"/>
+                <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </UNMATCH_TIMING>
+                <SUBNET address="::" prefix="0"/>
+                <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+                <RULE_CHAIN>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="True" ID="-8244053749001089363" NAME="TPM Was Found in Dev Manager" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                        <EXPRESSION EXPR_TYPE="SIMPLE">
+                            <!--Rule expression. Rule name is: TPM Was Found in Dev Manager-->
+                            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.171d1050517ac71b424f410f1e58f24b" LABEL="Windows Expected Script Result Command or Script file:CheckDMforTPM2.vbs, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.0" PLUGIN_VESRION_NUMBER="113000006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                                <FIELD METANAME="script_result" NAME="script_result.171d1050517ac71b424f410f1e58f24b">
+                                    <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="CheckDMforTPM2.vbs"/>
+                                    <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                                </FIELD>
+                                <FILTER CASE_SENSITIVE="false" FILTER_ID="8032059833971703392" TYPE="contains">
+                                    <VALUE VALUE2="Trusted"/>
+                                </FILTER>
+                            </CONDITION>
+                        </EXPRESSION>
+                        <ACTION DISABLED="false" NAME="add-to-group">
+                            <PARAM NAME="temporary" VALUE="true"/>
+                            <PARAM NAME="group-name" VALUE="id:5773334475845689253;name:WinManaged_TPMFoundDM"/>
+                            <PARAM NAME="item_key" VALUE="mac_or_ip"/>
+                            <PARAM NAME="comment" VALUE=""/>
+                            <SCHEDULE>
+                                <START Class="Immediately"/>
+                                <OCCURENCE onStart="true"/>
+                            </SCHEDULE>
+                        </ACTION>
+                    </INNER_RULE>
+                    <INNER_RULE APP_VERSION="8.4.0.1-32" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1147674376243827168" NAME="Unresolved Or Not Found" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                            <ADMISSION ALL="true"/>
+                        </MATCH_TIMING>
+                    </INNER_RULE>
+                </RULE_CHAIN>
+                <REPORT_TABLES/>
+            </RULE>
+        </POLICY>
+    </POLICIES>
+</POLICY_FOLDER>
