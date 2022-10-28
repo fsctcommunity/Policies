@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GROUP DESCRIPTION="" ID="4082452066168121709" NAME="TPM Policy Groups">
+    <CHILDREN>
+        <GROUP DESCRIPTION="" ID="7669238505586614087" NAME="WinManaged_TPMEnabled"/>
+        <GROUP DESCRIPTION="Queried device manager for and found TPM" ID="-6561127665751587394" NAME="WinManaged_TPMFoundDM"/>
+        <GROUP DESCRIPTION="" ID="-8502386819274710228" NAME="WinManaged_TPMNotEnabled"/>
+        <GROUP DESCRIPTION="" ID="8172501058795433076" NAME="WinManaged_TPMver1.0"/>
+        <GROUP DESCRIPTION="" ID="-5469424812629687608" NAME="WinManaged_TPMver2.0"/>
+    </CHILDREN>
+</GROUP>
