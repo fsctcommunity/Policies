@@ -6,6 +6,18 @@ This policy and VBScript runs to determine the type of Chassis a machine which c
 
 An example would only running encryption compliance policies against laptops. Based on the results of the VBScript a group for Laptops is created and then my encryption compliance would be targeted to that specific group.
 
+This policy breaks out the following types of chassis:
+
+- Rack Mount
+
+- Virtual
+
+- Desktop
+
+- Laptop
+
+- Other
+
 ## Needed for the policy
 
 The following items in this folder are needed for the policy
