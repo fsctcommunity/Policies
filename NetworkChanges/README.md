@@ -12,7 +12,7 @@ The following policies are a part of this group
 - IT Flows On Network
 - New Device Detected
 - Operating System Changes Network Function
-- TCP/IPPort Change-state
+- TCP/IP Port Change-state
 - Track Device Move
 - Track Switch Change-state
 
