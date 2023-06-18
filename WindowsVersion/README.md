@@ -11,7 +11,7 @@ This policy focus on detecting the exact version of Windows 10 and marking wheth
 
 As Microsoft releases additional versions, this policy will need to be modified.
 
-The policy is using the "Windows Version Fine-tuned" attribute to look at specific versions of Windows 10 and Windows 11 (as more vesions of Windows 11 are released).
+The policy is using the "Windows Version Fine-tuned" attribute to look at specific versions of Windows 10 and Windows 11 (as more versions of Windows 11 are released).
 
 NOTE: There are currently two Long Term Servicing Channels that are supported by Microsoft for Windows 10.
 
