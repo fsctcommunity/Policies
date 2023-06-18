@@ -7,7 +7,7 @@ this policies inclues a set of scripts to work with Forescout, you are free to t
 -  Step 2: Install the policies -  1.3.2 Mac OS assesment . Policies.xml
 -  Step3 : Disable, or remove allt he policies that you dont need and tune it according your needs.
 
- Important Note: this Sets of policies are not made by Forescout, but it follow the best practice, all of them uese a last condition called "Irresolvable" but you can change it to investigate in order to see why it fail in some endpoints, 
+Important Note: this set of policies are not made by Forescout, but they follow the best practice, all of them uese a last condition called "Irresolvable" but you can change it to investigate in order to see why it fail in some endpoints, 
 
 ## Known Issues: 
 - Some Policies Run irresolvable due module is not present - Work Arround : Add a second condition on each policy where the value return is blank or any value
