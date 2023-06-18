@@ -1,7 +1,7 @@
 # fs-mac-assesment
 this policies inclues a set of scripts to work with Forescout, you are free to try and test this scripts and policies.
 
-## Mode to use<
+## Mode to use
 
 - Step 1:  Add all the scripts  located in the script folder to your Forescout Installation
 -  Step 2: Install the policies -  1.3.2 Mac OS assesment . Policies.xml
