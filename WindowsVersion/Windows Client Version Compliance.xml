@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <RULES>
-    <RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="240889045655233110" META_TYPE="COMPLY" NAME="Windows Client Version Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+    <RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="-6793512028076348823" META_TYPE="COMPLY" NAME="Windows Client Version Compliance" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
         <GROUP_IN_FILTER/>
         <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
         <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
@@ -10,7 +10,7 @@
         <EXPRESSION EXPR_TYPE="SIMPLE">
             <!--Rule expression. Rule name is: Windows Client Version Compliance-->
             <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
-                <FILTER FILTER_ID="-5991016677941371451">
+                <FILTER FILTER_ID="-1046626141118613180">
                     <GROUP ID="7650555432006681525" NAME="All Managed Windows Devices"/>
                 </FILTER>
             </CONDITION>
@@ -25,14 +25,14 @@
             <ADMISSION ALL="true"/>
         </UNMATCH_TIMING>
         <RULE_CHAIN>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-6647893639223149815" NAME="Windows 11" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2990508284301697316" NAME="Windows 11" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 11-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER AUTO_UPDATE="false" FILTER_ID="-5836601898208276554" OPTIONS_DIGEST="f468635083eeb7888e86583d61435a0c">
                             <OPT VALUE="Windows_11_64-bit_Professional"/>
                             <OPT VALUE="Windows_11_64-bit_Enterprise"/>
@@ -53,14 +53,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="894936930374831487" NAME="Windows 10 version 22H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7864031389849828566" NAME="Windows 10 version 22H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 22H2-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="15053879042101278">
                             <SUB_FILTER AUTO_UPDATE="false" HAS_VALUE="true" MEETS="true" OPTIONS_DIGEST="3a4cec1712dc8b13e4baf60aaa709ffc" SUB_FIELD_NAME="parent">
                                 <OPT VALUE="windows_10"/>
@@ -82,7 +82,7 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 Long Term Servicing Branch - End of Support 2027&#10;" ID="8940526268826927767" NAME="Windows 10 LTSC 21H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 Long Term Servicing Branch - End of Support 2027&#10;" ID="5410453188129361793" NAME="Windows 10 LTSC 21H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
@@ -90,7 +90,7 @@
                 <EXPRESSION EXPR_TYPE="AND">
                     <!--Rule expression. Rule name is: Windows 10 LTSC 21H2-->
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-3704070209608108788">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="2111"/>
@@ -102,7 +102,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
                             <FILTER CASE_SENSITIVE="false" FILTER_ID="-3338978057009573769" TYPE="contains">
                                 <VALUE VALUE2="ltsb"/>
                             </FILTER>
@@ -120,14 +120,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1802357685273959717" NAME="Windows 10 version 21H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4615362099220051912" NAME="Windows 10 version 21H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
-                <META_TYPE STATE="COMPLY"/>
+                <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 21H2-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-3704070209608108788">
                             <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                 <VALUE VALUE2="2111"/>
@@ -149,14 +149,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-4569548020341708157" NAME="Windows 10 version 21H1" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-2741245981530717779" NAME="Windows 10 version 21H1" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
-                <META_TYPE STATE="COMPLY"/>
+                <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 21H1-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="2933687296205198920">
                             <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                 <VALUE VALUE2="2105"/>
@@ -178,14 +178,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6488695359593163228" NAME="Windows 10 version 20H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8975773469997521195" NAME="Windows 10 version 20H2" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
-                <META_TYPE STATE="COMPLY"/>
+                <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 20H2-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="4196721930912711090">
                             <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                 <VALUE VALUE2="2009"/>
@@ -207,14 +207,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3655660460474825949" NAME="Windows 10 version 20H1" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="6253348581476476439" NAME="Windows 10 version 20H1" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 20H1-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="5174800321964116101">
                             <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                 <VALUE VALUE2="2004"/>
@@ -236,14 +236,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="1229319324528437346" NAME="Windows 10 version 1909" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8969745957580587332" NAME="Windows 10 version 1909" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 10 version 1909-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-396861823097503316">
                             <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                 <VALUE VALUE2="1909"/>
@@ -265,7 +265,7 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 LTSC 1809 - End of Support 2024" ID="5386511749399743841" NAME="Windows 10 LTSC 1809" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 LTSC 1809 - End of Support 2024" ID="4835300885852095265" NAME="Windows 10 LTSC 1809" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
@@ -273,7 +273,7 @@
                 <EXPRESSION EXPR_TYPE="AND">
                     <!--Rule expression. Rule name is: Windows 10 LTSC 1809-->
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="877162045571463706">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1809"/>
@@ -285,7 +285,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER CASE_SENSITIVE="false" FILTER_ID="-2194665640754437913" TYPE="contains">
                                 <VALUE VALUE2="ltsb"/>
                             </FILTER>
@@ -303,7 +303,7 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 LTSC 1607 No longer supported &#10;Not Compliant" ID="-1727690473263806047" NAME="Windows 10 LTSC 1607" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Windows 10 LTSC 1607 No longer supported &#10;Not Compliant" ID="-636059353499542077" NAME="Windows 10 LTSC 1607" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
@@ -311,7 +311,7 @@
                 <EXPRESSION EXPR_TYPE="AND">
                     <!--Rule expression. Rule name is: Windows 10 LTSC 1607-->
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="1778898654173282284">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1607"/>
@@ -323,7 +323,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_cpe" LABEL="Windows Version CPE Format" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER CASE_SENSITIVE="false" FILTER_ID="-2194665640754437913" TYPE="contains">
                                 <VALUE VALUE2="ltsb"/>
                             </FILTER>
@@ -341,7 +341,7 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="7971647673360833334" NAME="Windows 10 EOL" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-966695576412311781" NAME="Windows 10 EOL" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
@@ -349,7 +349,7 @@
                 <EXPRESSION EXPR_TYPE="OR">
                     <!--Rule expression. Rule name is: Windows 10 EOL-->
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-1769009558735994505">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1507"/>
@@ -361,7 +361,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-5299613030955469992">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1511"/>
@@ -373,7 +373,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-8034653445822687079">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1607"/>
@@ -385,7 +385,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="3788050411022619104">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1703"/>
@@ -397,7 +397,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="5481401611922571776">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1709"/>
@@ -409,7 +409,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-8975213197508782285">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1803"/>
@@ -421,7 +421,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="-1713845814470376088">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1809"/>
@@ -433,7 +433,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="7936366050956125182">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="1903"/>
@@ -445,7 +445,7 @@
                         </CONDITION>
                     </EXPRESSION>
                     <EXPRESSION EXPR_TYPE="SIMPLE">
-                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os_comp" LABEL="Windows Version Fine-tuned" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                             <FILTER COMP_FIELD_NAME="va_os_comp" FILTER_ID="5399728652960060424">
                                 <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="internal_version_number" TYPE="contains">
                                     <VALUE VALUE2="2004"/>
@@ -468,14 +468,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-1109619708338131203" NAME="Windows 7" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-8060877830883237009" NAME="Windows 7" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 7-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER AUTO_UPDATE="false" FILTER_ID="-3359185625969043029" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
                             <OPT VALUE="Windows_7_64-bit_Embedded"/>
                             <OPT VALUE="Windows_7_64-bit_Embedded_Standard_Service_Pack_1"/>
@@ -543,14 +543,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-716350666096950601" NAME="Windows 8" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5139193934095531134" NAME="Windows 8" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 8-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER AUTO_UPDATE="false" FILTER_ID="-1572651193657666448" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
                             <OPT VALUE="Windows_8_64-bit_Pro_RTM"/>
                             <OPT VALUE="Windows_8.1_64-bit_ProfessionalWMC"/>
@@ -590,14 +590,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5573214532337766577" NAME="Windows XP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="2891870924175330632" NAME="Windows XP" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows XP-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
                         <FILTER AUTO_UPDATE="false" FILTER_ID="-2867245582464945004" OPTIONS_DIGEST="8b1d92101f2070e75af008f2a881b186">
                             <OPT VALUE="Windows_XP_Professional_Edition_Service_Pack_2"/>
                             <OPT VALUE="Windows_XP_Embedded RTM"/>
@@ -645,14 +645,14 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5307785052226699048" NAME="Windows 2000" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-7882277450887096070" NAME="Windows 2000" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
                 <META_TYPE STATE="NOT_COMPLY"/>
                 <EXPRESSION EXPR_TYPE="SIMPLE">
                     <!--Rule expression. Rule name is: Windows 2000-->
-                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.3" PLUGIN_VESRION_NUMBER="113030058" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="va_os" LABEL="Windows Version" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.4" PLUGIN_VESRION_NUMBER="113040073" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
                         <FILTER AUTO_UPDATE="false" FILTER_ID="2243678027886759938" OPTIONS_DIGEST="f468635083eeb7888e86583d61435a0c">
                             <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_1"/>
                             <OPT VALUE="Windows_2000_Datacenter_Server_Service_Pack_4"/>
@@ -693,7 +693,7 @@
                     </SCHEDULE>
                 </ACTION>
             </INNER_RULE>
-            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="5468125002380869857" NAME="Other or No Version Available" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-3416646089667959933" NAME="Other or No Version Available" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
                 <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
                     <ADMISSION ALL="true"/>
                 </MATCH_TIMING>
