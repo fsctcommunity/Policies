@@ -16,13 +16,13 @@ NOTE: All Windows 10 builds start 10. and then contain the build number listed b
 
 | Windows 10 Version | Build # | Supported or Not |
 | :----------------- | :------ | :--------------- |
-| 21 H2              | 19044   | Yes              |
-| 21 H1              | 19043   | Yes              |
-| 20 H2              | 19042   | Yes              |
-| 2004               | 19041   | Yes              |
+| 21 H2              | 19044   | No               |
+| 21 H1              | 19043   | No               |
+| 20 H2              | 19042   | No               |
+| 2004               | 19041   | No               |
 | 1909               | 18363   | No               |
 | 1809 - LTSC        | 17763   | Yes - LTSC       |
-| 1607               | 14393   | Yes              |
+| 1607               | 14393   | No               |
 | 1507               | 10240   | No               |
 
 ## Build Numbers of Windows Server
