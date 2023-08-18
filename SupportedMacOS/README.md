@@ -4,7 +4,7 @@ Track Network Changes Policy
 
 ## Use Case
 
-Mac OS Machines with out of date or unsupported OS could present securtiy issues. This policy separates those that are currently supported (Compliant) and those that are not (Uncompliant). Actions can be assigned and created based on this grouping.
+Mac OS Machines with out of date or unsupported OS could present securtiy issues. This policy separates those that are currently supported (Compliant) and those that are not (Uncompliant). Actions can be assigned and created based on this grouping.hgjjjyewuhhrugsbvgvvdfhvhfv
 
 The following versions of Mac OSX and their support status
 
@@ -36,3 +36,4 @@ The following versions of Mac OSX and their support status
 
 ## Needed for the policy
 
+MacOS Compliance.xml is the policy needed for this
