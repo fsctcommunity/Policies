@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="Takes an event from XDR for Detection Rule 0085 and does action&#10;" ENABLED="true" ID="-4322146288519908078" NAME="Rhysida  - DR-0085" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="OR">
+            <!--Rule expression. Rule name is: Rhysida  - DR-0085-->
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cysiv_alerts" LABEL="Cloud Data Exchange Alerts" LEFT_PARENTHESIS="0" LOGIC="OR" PLUGIN_NAME="Cloud Data Exchange" PLUGIN_UNIQUE_NAME="cysiv" PLUGIN_VESRION="1.0.5" PLUGIN_VESRION_NUMBER="10050006" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER COMP_FIELD_NAME="cysiv_alerts" FILTER_ID="7555454347563161732">
+                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="cysiv_detection_name" TYPE="contains">
+                            <VALUE VALUE2="Rhysida"/>
+                        </SUB_FILTER>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+            <EXPRESSION EXPR_TYPE="SIMPLE">
+                <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cysiv_alerts" LABEL="Cloud Data Exchange Alerts" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Cloud Data Exchange" PLUGIN_UNIQUE_NAME="cysiv" PLUGIN_VESRION="1.0.5" PLUGIN_VESRION_NUMBER="10050006" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                    <FILTER COMP_FIELD_NAME="cysiv_alerts" FILTER_ID="423096721079344956">
+                        <SUB_FILTER CASE_SENSITIVE="false" HAS_VALUE="true" MEETS="true" SUB_FIELD_NAME="cysiv_detection_name" TYPE="contains">
+                            <VALUE VALUE2="DR-0085"/>
+                        </SUB_FILTER>
+                    </FILTER>
+                </CONDITION>
+            </EXPRESSION>
+        </EXPRESSION>
+        <ACTION DISABLED="true" NAME="sw_quarantine">
+            <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+            <PARAM NAME="vlan" VALUE="666"/>
+            <PARAM NAME="vlan_group" VALUE="vlan"/>
+            <PARAM NAME="vlan_name" VALUE=""/>
+            <SCHEDULE>
+                <START Class="Immediately"/>
+                <OCCURENCE onStart="true"/>
+            </SCHEDULE>
+        </ACTION>
+        <ACTION DISABLED="true" NAME="snow_security">
+            <PARAM NAME="short_description" VALUE="This is an XDR Alert based on DR-0085 (Rhysida)"/>
+            <PARAM NAME="description" VALUE="This is a ServiceNow SOC incident based on DR-0085 (Rhysida). We have moved the asset with an IP Address of ({ip}) to the quarantine VLAN.&#10;&#10;Good luck "/>
+            <SCHEDULE>
+                <START Class="Immediately"/>
+                <OCCURENCE onStart="true"/>
+            </SCHEDULE>
+        </ACTION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <SUBNET address="::" prefix="0"/>
+        <RULE_CHAIN/>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
