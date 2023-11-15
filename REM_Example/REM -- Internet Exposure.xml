@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ENABLED="true" ID="7911273656612850585" NAME="REM -- Internet Exposure" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <RANGE FROM="0.0.0.0" TO="255.255.255.255"/>
+        <SUBNET address="::" prefix="0"/>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5124235917340959754" NAME="UPS with Internet" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: UPS with Internet-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.6.1" PLUGIN_VESRION_NUMBER="16010601" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-2510137544088512765" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Facilities/Building Automation/Uninterruptible Power Supply"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cysiv_risk_internet_exposure_indication" LABEL="Cloud Data Exchange Risk Internet Exposure Indication" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Cloud Data Exchange" PLUGIN_UNIQUE_NAME="cysiv" PLUGIN_VESRION="1.0.5" PLUGIN_VESRION_NUMBER="10050006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="6927993740745880984" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="sw_quarantine">
+                    <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+                    <PARAM NAME="vlan" VALUE="666"/>
+                    <PARAM NAME="vlan_group" VALUE="vlan"/>
+                    <PARAM NAME="vlan_name" VALUE=""/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+                <ACTION DISABLED="false" NAME="snow_security">
+                    <PARAM NAME="short_description" VALUE="This incident is created by the Forescout platform."/>
+                    <PARAM NAME="description" VALUE="This {ip} is now connected to the internet"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.2-668" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-502008205062489987" NAME="Camera" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="AND">
+                    <!--Rule expression. Rule name is: Camera-->
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="prim_classification" LABEL="Function" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Device Classification Engine" PLUGIN_UNIQUE_NAME="classification" PLUGIN_VESRION="1.6.1" PLUGIN_VESRION_NUMBER="16010601" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="-4493075936842079081" MATCH_SUBTREE="true">
+                                <PATH VALUE="Operational Technology/Facilities/Physical Security/Surveillance/IP Camera"/>
+                            </FILTER>
+                        </CONDITION>
+                    </EXPRESSION>
+                    <EXPRESSION EXPR_TYPE="SIMPLE">
+                        <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="cysiv_risk_internet_exposure_indication" LABEL="Cloud Data Exchange Risk Internet Exposure Indication" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="Cloud Data Exchange" PLUGIN_UNIQUE_NAME="cysiv" PLUGIN_VESRION="1.0.5" PLUGIN_VESRION_NUMBER="10050006" RET_VALUE_ON_UKNOWN="UNMATCH" RIGHT_PARENTHESIS="0">
+                            <FILTER FILTER_ID="8187101605954339590" VALUE="true"/>
+                        </CONDITION>
+                    </EXPRESSION>
+                </EXPRESSION>
+                <ACTION DISABLED="false" NAME="sw_quarantine">
+                    <PARAM NAME="dont_force_assign_2_vlan" VALUE="true"/>
+                    <PARAM NAME="vlan" VALUE="1"/>
+                    <PARAM NAME="vlan_group" VALUE="vlan_name"/>
+                    <PARAM NAME="vlan_name" VALUE="CAMERA"/>
+                    <SCHEDULE>
+                        <START Class="Immediately"/>
+                        <OCCURENCE onStart="true"/>
+                    </SCHEDULE>
+                </ACTION>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
