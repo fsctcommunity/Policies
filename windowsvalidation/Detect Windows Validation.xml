@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RULES>
+    <RULE APP_VERSION="8.4.3-715" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="This script detects to see if a Windows machine is activated/validated&#10;" ENABLED="true" ID="5106348289575015751" NAME="Detect Windows Validation" NOT_COND_UPDATE="true" UPGRADE_PERFORMED="true">
+        <GROUP_IN_FILTER/>
+        <INACTIVITY_TTL TTL="0" USE_DEFAULT="true"/>
+        <ADMISSION_RESOLVE_DELAY TTL="0" USE_DEFAULT="true"/>
+        <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </MATCH_TIMING>
+        <EXPRESSION EXPR_TYPE="SIMPLE">
+            <!--Rule expression. Rule name is: Detect Windows Validation-->
+            <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="in-group" LABEL="Member of Group" LEFT_PARENTHESIS="0" LOGIC="AND" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                <FILTER FILTER_ID="-1131904028021064630">
+                    <GROUP ID="1361820504861611965" NAME="Domain Managed Windows Devices"/>
+                </FILTER>
+            </CONDITION>
+        </EXPRESSION>
+        <EXCEPTION NAME="ip" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="mac" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="nbthost" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="user" UNKNOWN_EVAL="UNMATCH"/>
+        <EXCEPTION NAME="group" UNKNOWN_EVAL="UNMATCH"/>
+        <ORIGIN NAME="CUSTOM"/>
+        <UNMATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+            <ADMISSION ALL="true"/>
+        </UNMATCH_TIMING>
+        <SEGMENT ID="-662522333403742174" NAME="Forescout Lab">
+            <RANGE FROM="10.0.0.0" TO="10.255.255.255"/>
+            <RANGE FROM="192.168.2.0" TO="192.168.2.255"/>
+            <RANGE FROM="192.168.4.0" TO="192.168.5.255"/>
+            <RANGE FROM="192.168.7.0" TO="192.168.7.255"/>
+            <RANGE FROM="192.168.10.0" TO="192.168.10.255"/>
+            <RANGE FROM="192.168.20.0" TO="192.168.20.255"/>
+            <RANGE FROM="192.168.80.0" TO="192.168.80.255"/>
+            <RANGE FROM="192.168.116.0" TO="192.168.116.255"/>
+        </SEGMENT>
+        <RULE_CHAIN>
+            <INNER_RULE APP_VERSION="8.4.3-715" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="8286375349030952418" NAME="Windows is Activated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+                <EXPRESSION EXPR_TYPE="SIMPLE">
+                    <!--Rule expression. Rule name is: Windows is Activated-->
+                    <CONDITION EMPTY_LIST_VALUE="false" FIELD_NAME="script_result.943e3de05917e14bf80739741d2b0a0a" LABEL="Windows Expected Script Result Command or Script file:Detect_activation_ENG.bat, Run Interactive:false" LEFT_PARENTHESIS="0" LOGIC="AND" PLUGIN_NAME="HPS Inspection Engine" PLUGIN_UNIQUE_NAME="va" PLUGIN_VESRION="11.3.7" PLUGIN_VESRION_NUMBER="113070145" RET_VALUE_ON_UKNOWN="IRRESOLVED" RIGHT_PARENTHESIS="0">
+                        <FIELD METANAME="script_result" NAME="script_result.943e3de05917e14bf80739741d2b0a0a">
+                            <PARAM NAME="script_howtorun_prop" TYPE="string" VALUE="Detect_activation_ENG.bat"/>
+                            <PARAM NAME="script_interactive" TYPE="string" VALUE="false"/>
+                        </FIELD>
+                        <FILTER CASE_SENSITIVE="false" FILTER_ID="-1985144922243409875" TYPE="contains">
+                            <VALUE VALUE2="yes"/>
+                        </FILTER>
+                    </CONDITION>
+                </EXPRESSION>
+            </INNER_RULE>
+            <INNER_RULE APP_VERSION="8.4.3-715" CACHE_TTL="259200" CACHE_TTL_SYNCED="true" CLASSIFICATION="REG_STATUS" DESCRIPTION="" ID="-5083669109375568284" NAME="Windows is not activated" NOT_COND_UPDATE="true" RECHECK_MAIN_RULE_DEF="true">
+                <MATCH_TIMING RATE="28800" SKIP_INACTIVE="true">
+                    <ADMISSION ALL="true"/>
+                </MATCH_TIMING>
+            </INNER_RULE>
+        </RULE_CHAIN>
+        <REPORT_TABLES/>
+    </RULE>
+</RULES>
